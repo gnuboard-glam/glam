@@ -1,0 +1,47 @@
+<?php
+$required = ['required' => 'true'];
+$typeNumber = ['required' => 'true', 'type' => 'number'];
+$typeSizes = ['required' => 'true', 'pattern' => '\d+(\s?,\s?\d+)*'];
+$typeJpg = ['required' => 'true', 'pattern' => '.+\.jpe?g'];
+$typePng = ['required' => 'true', 'pattern' => '.+\.png'];
+$typeImage = ['required' => 'true', 'pattern' => '.+\.\*'];
+
+echo formOpen('./action.php');
+echo formSubmitOnly();
+echo formTable('서버 설정', [
+	['server', '이미지 서버', null, $required],
+	['localServer', '이미지 개발 서버', null, $required],
+	['resizeDir', '크기 변형 폴더', null, $required],
+]);
+
+echo formTable('상품 설정', [
+	// ['productServer', '이미지 서버],
+	// ['productResizeServer']
+	['productDir', '상품 폴더', null, $required],
+	['productSize', '상품 원본 크기', null, $typeNumber],
+	['productResize', '상품 이미지 추가 크기', null, $typeSizes],
+	['productJpg', '상품 JPEG 이미지', null, $typeJpg],
+	['productPng', '상품 PNG 이미지', null, $typePng],
+	['productDetail', '상품 상세 설명 이미지', null, $typeImage],
+]);
+
+echo FormTable('브랜드 설정', [
+	//['brandServer']
+	['brandDir', '브랜드 이미지 서버', null, $required]
+]);
+
+echo formTable('사은품 설정', [
+	// ['giftServer', '사은품 서버'],
+	// ['giftResizeServer'],
+	['giftDir', '사은품 폴더', null, $required],
+	['giftSize', '사은품 원본 크기', null, $typeNumber],
+	['giftResize', '사은품 추가 크기', null, $typeSizes],
+	['giftJpg', '사은품 JPEG 이미지', null, $typeJpg]
+]);
+
+echo formTable('제휴 카드 설정', [
+	// ['cardServer', '카드 서버'],
+	['cardPng', '카드 이미지', null, $typeImage]
+]);
+
+echo formClose;

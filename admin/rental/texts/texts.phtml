@@ -1,0 +1,54 @@
+<?= formOpen('./action.php') ?>
+<?=h2('아이코드 설정')?>
+<?=tableOpen()?>
+    <?=trInputs([
+         ['icode-id', '아이코드 아이디', $icodeId],
+		['icode-password', '아이코드 비밀번호', $icodePassword, ['type' => 'password']],
+        ['icode-send-number', '아이코드 회신번호', $icodeSendNumber]
+    ]);?>
+<?=tableClose?>
+<?=h2('문자 내용 설정')?>
+<?=descOpen?>
+<?=variables([
+    'title' => '사이트 명',
+    'name' => '고객 명',
+    'phone' => '고객 전화번호',
+    'model' => '모델 명'
+])?>
+<?=descClose?>
+<div class="texts">
+    <div class="text">
+        <h3>관리자 문자 상담</h3>
+        <textarea name="managerConsult" cols="14" rows="5" required><?= $contentManagerConsult ?></textarea>
+    </div>
+    <div class="text">
+        <h3>고객 문자 상담</h3>
+        <textarea name="userConsult" cols="14" rows="5" required><?= $contentUserConsult ?></textarea>
+    </div>
+</div>
+<div class="texts">
+    <div class="text">
+        <h3>관리자 주문 접수</h3>
+        <textarea name="managerOrder" cols="14" rows="5" required><?= $contentManagerOrder ?></textarea>
+    </div>
+    <div class="text">
+        <h3>고객 주문 접수</h3>
+        <textarea name="userOrder" cols="14" rows="5" required><?= $contentUserOrder ?></textarea>
+    </div>
+    <div class="text">
+        <h3>고객 주문 확인</h3>
+        <textarea name="userCheck" cols="14" rows="5" required><?= $contentUserCheck ?></textarea>
+        <label><input type="checkbox" name="use-user-check" value="1" <?= checked($useUserCheck) ?>>
+            사용
+        </label>
+    </div>
+    <div class="text">
+        <h3>고객 주문 완료</h3>
+        <textarea name="userComplete" cols="14" rows="5" required><?= $contentUserComplete ?></textarea>
+        <label><input type="checkbox" name="use-user-complete" value="1" <?= checked($useUserComplete) ?>>
+            사용
+        </label>
+    </div>
+</div>
+<?= formSubmitOnly() ?>
+<?= formClose ?>

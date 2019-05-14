@@ -1,0 +1,12 @@
+/.idea
+
+# php
+/vendor
+composer.lock
+
+# js
+/node_modules
+package-lock.json
+
+# glam shop
+shop/ep_all.txt

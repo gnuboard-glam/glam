@@ -1,0 +1,30 @@
+<div class="local_ov01 local_ov">
+    <span class="btn_ov01"><span class="ov_txt">전체 상품 </span><span
+                class="ov_num"> <?= $products->total ?> </span></span>
+</div>
+
+<form>
+    <input type="hidden" name="page" value="1">
+    <div class="form-shop-search local_sch01 local_sch">
+		<?= select('category', $glam->getShopCategoryAsOptions(), $category) ?>
+		<?= select('target', [
+			'it_name'  => '상품명',
+			'it_model' => '모델명'
+		], $target) ?>
+		<?= input('keyword', $keyword) ?>
+
+        <label>
+            <input type="radio" name="type" value="" <?=checked($type === '')?>>
+            전체
+        </label>
+		<?php foreach ($glam->_shopTypeLabels as $typeId => $label): ?>
+            <label>
+                <input type="radio" name="type" value="<?= $typeId ?>" <?=checked($typeId == $type)?>>
+				<?= $label ?>
+            </label>
+		<?php endforeach ?>
+        <button type="submit" class="btn btn_submit" accesskey="f">검색</button>
+    </div>
+</form>
+
+<?= $pagebar ?>

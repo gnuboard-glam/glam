@@ -1,0 +1,521 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>@lisslet/cssdot - v32.3.19</title><link rel="stylesheet" href="assets/css/main.css"><link href="https://fonts.googleapis.com/css?family=Open+Sans:400,500,700" rel="stylesheet" type="text/css"><meta name="viewport" content="width=device-width"><meta content="IE=edge, chrome=1" http-equiv="X-UA-Compatible"><!-- Open Graph tags --><meta property="og:title" content="@lisslet/cssdot - SassDoc"><meta property="og:type" content="website"><meta property="og:description" content="<p>SASS based CSS Framework</p>
+"><!-- Thanks to Sass-lang.com for the icons --><link href="assets/images/favicon.png" rel="shortcut icon"></head><body><aside class="sidebar" role="nav"><div class="sidebar__header"><h1 class="sidebar__title"><a href="https://github.com/lisslet/cssdot#readme">@lisslet/cssdot - v32.3.19</a></h1></div><div class="sidebar__body"><button type="button" class="btn-toggle js-btn-toggle" data-alt="Open all">Close all</button><p class="sidebar__item sidebar__item--heading" data-slug="undefined"><a href="#undefined">General</a></p><div><p class="sidebar__item sidebar__item--sub-heading" data-slug="undefined-mixin"><a href="#undefined-mixin">mixins</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="layout-frame-rule" data-type="mixin"><a href="#undefined-mixin-layout-frame-rule">layout-frame-rule</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="layout-frame-child-rule" data-type="mixin"><a href="#undefined-mixin-layout-frame-child-rule">layout-frame-child-rule</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="animate" data-type="mixin"><a href="#undefined-mixin-animate">animate</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="align-prefix-rule" data-type="mixin"><a href="#undefined-mixin-align-prefix-rule">align-prefix-rule</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="inspect-theme" data-type="mixin"><a href="#undefined-mixin-inspect-theme">inspect-theme</a></li></ul><p class="sidebar__item sidebar__item--sub-heading" data-slug="undefined-variable"><a href="#undefined-variable">variables</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="__layout-max-width-key" data-type="variable"><a href="#undefined-variable-__layout-max-width-key">__layout-max-width-key</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="__dot-prefix" data-type="variable"><a href="#undefined-variable-__dot-prefix">__dot-prefix</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="__global_duration" data-type="variable"><a href="#undefined-variable-__global_duration">__global_duration</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="DOT-THEME-DEFAULT-PALETTE-POLYFILL-MAP" data-type="variable"><a href="#undefined-variable-DOT-THEME-DEFAULT-PALETTE-POLYFILL-MAP">DOT-THEME-DEFAULT-PALETTE-POLYFILL-MAP</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="dot-global-themes" data-type="variable"><a href="#undefined-variable-dot-global-themes">dot-global-themes</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="dot-global-theme-name" data-type="variable"><a href="#undefined-variable-dot-global-theme-name">dot-global-theme-name</a></li></ul><p class="sidebar__item sidebar__item--sub-heading" data-slug="undefined-function"><a href="#undefined-function">functions</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="is-string" data-type="function"><a href="#undefined-function-is-string">is-string</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="is-number" data-type="function"><a href="#undefined-function-is-number">is-number</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="is-numeric" data-type="function"><a href="#undefined-function-is-numeric">is-numeric</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="is-list" data-type="function"><a href="#undefined-function-is-list">is-list</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="is-map" data-type="function"><a href="#undefined-function-is-map">is-map</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="is-not-map" data-type="function"><a href="#undefined-function-is-not-map">is-not-map</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="arguments" data-type="function"><a href="#undefined-function-arguments">arguments</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="args" data-type="function"><a href="#undefined-function-args">args</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="rule-args" data-type="function"><a href="#undefined-function-rule-args">rule-args</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="rule-arguments" data-type="function"><a href="#undefined-function-rule-arguments">rule-arguments</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="rand" data-type="function"><a href="#undefined-function-rand">rand</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="rand-string" data-type="function"><a href="#undefined-function-rand-string">rand-string</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="dot-query_d" data-type="function"><a href="#undefined-function-dot-query_d">dot-query_d</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="dot-class_d" data-type="function"><a href="#undefined-function-dot-class_d">dot-class_d</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="dot-id_d" data-type="function"><a href="#undefined-function-dot-id_d">dot-id_d</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="dot-id" data-type="function"><a href="#undefined-function-dot-id">dot-id</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="map-initiate" data-type="function"><a href="#undefined-function-map-initiate">map-initiate</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="char-at" data-type="function"><a href="#undefined-function-char-at">char-at</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="to-length" data-type="function"><a href="#undefined-function-to-length">to-length</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="to-number" data-type="function"><a href="#undefined-function-to-number">to-number</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="str-replace" data-type="function"><a href="#undefined-function-str-replace">str-replace</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="-add" data-type="function"><a href="#undefined-function--add">-add</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="-mix" data-type="function"><a href="#undefined-function--mix">-mix</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="-get" data-type="function"><a href="#undefined-function--get">-get</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="-c" data-type="function"><a href="#undefined-function--c">-c</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="-bg-c" data-type="function"><a href="#undefined-function--bg-c">-bg-c</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="-bg-c" data-type="function"><a href="#undefined-function--bg-c">-bg-c</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="-ls" data-type="function"><a href="#undefined-function--ls">-ls</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="palette" data-type="function"><a href="#undefined-function-palette">palette</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="-primary" data-type="function"><a href="#undefined-function--primary">-primary</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="-accent" data-type="function"><a href="#undefined-function--accent">-accent</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="-warn" data-type="function"><a href="#undefined-function--warn">-warn</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="-border" data-type="function"><a href="#undefined-function--border">-border</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="-link" data-type="function"><a href="#undefined-function--link">-link</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="-react" data-type="function"><a href="#undefined-function--react">-react</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="-active" data-type="function"><a href="#undefined-function--active">-active</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="-primary-accent" data-type="function"><a href="#undefined-function--primary-accent">-primary-accent</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="-primary-warn" data-type="function"><a href="#undefined-function--primary-warn">-primary-warn</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="-primary-border" data-type="function"><a href="#undefined-function--primary-border">-primary-border</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="-primary-text" data-type="function"><a href="#undefined-function--primary-text">-primary-text</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="-primary-link" data-type="function"><a href="#undefined-function--primary-link">-primary-link</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="-primary-react" data-type="function"><a href="#undefined-function--primary-react">-primary-react</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="-primary-active" data-type="function"><a href="#undefined-function--primary-active">-primary-active</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="-accent-warn" data-type="function"><a href="#undefined-function--accent-warn">-accent-warn</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="-accent-border" data-type="function"><a href="#undefined-function--accent-border">-accent-border</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="-accent-text" data-type="function"><a href="#undefined-function--accent-text">-accent-text</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="-accent-link" data-type="function"><a href="#undefined-function--accent-link">-accent-link</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="-accent-react" data-type="function"><a href="#undefined-function--accent-react">-accent-react</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="-accent-active" data-type="function"><a href="#undefined-function--accent-active">-accent-active</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="-warn-border" data-type="function"><a href="#undefined-function--warn-border">-warn-border</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="-warn-text" data-type="function"><a href="#undefined-function--warn-text">-warn-text</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="-warn-link" data-type="function"><a href="#undefined-function--warn-link">-warn-link</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="-warn-react" data-type="function"><a href="#undefined-function--warn-react">-warn-react</a></li><li class="sidebar__item sassdoc__item" data-group="undefined" data-name="-warn-active" data-type="function"><a href="#undefined-function--warn-active">-warn-active</a></li></ul></div></div></aside><article class="main" role="main"><header class="header" role="banner"><div class="container"><div class="sassdoc__searchbar searchbar"><label for="js-search-input" class="visually-hidden">Search</label><div class="searchbar__form" id="js-search"><input name="search" type="search" class="searchbar__field" autocomplete="off" autofocus id="js-search-input" placeholder="Search"><ul class="searchbar__suggestions" id="js-search-suggestions"></ul></div></div></div></header><section class="main__section"><h1 class="main__heading" id="undefined"><div class="container">General</div></h1><section class="main__sub-section" id="undefined-mixin"><h2 class="main__heading--secondary"><div class="container">mixins</div></h2><section class="main__item container item" id="undefined-mixin-layout-frame-rule"><h3 class="item__heading"><a class="item__name" href="#mixin-layout-frame-rule">layout-frame-rule</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin layout-frame-rule() { 
+  $options: rule-arguments($options, max-width);
+
+  $selector: map-get($options, selector);
+
+  $max-width: map-get-if($options, max-width, $__layout-standard-width);
+  $min-width: map-get-if($options, min-width, $__layout-min-width);
+
+  $sticky-resize: map-get-if($options, sticky-resize, $__layout-sticky-resize);
+
+  $parent-query: unquote(&quot;#{&amp;}&quot;);
+
+  @if not ends-width($selector, &#39;-&#39;) {
+    $selector: $selector + &#39;-&#39;;
+  }
+
+  $id-selector: &#39;#&#39; + map-get($options, selector-string);
+
+  $containers: #{$id-selector+&#39;-head-wrap&#39;},  #{$id-selector+&#39;-main-wrap&#39;},  #{$id-selector+&#39;-foot-wrap&#39;};
+
+  // frame width
+  @at-root {
+    #{$selector+&#39;width&#39;},
+    #{$containers} {
+      min-width: px($__layout-min-width);
+      max-width: px($max-width);
+      margin: 0 auto;
+
+      @include ie610 {
+        width: $max-width;
+      }
+
+      @each $width in $__layout-widths {
+        @if ($sticky-resize) {
+          @if ($width &gt;= $__layout-standard-width and $width &lt;= $max-width) {
+            @include mq-min($width) {
+              max-width: px($width);
+            }
+          }
+        }
+      }
+    }
+
+    %frame-resize {
+      max-width: inherit;
+    }
+
+    #{$selector+&#39;resize&#39;} {
+      #{$containers} {
+        @extend %frame-resize;
+      }
+    }
+
+    #{$containers} {
+      &amp;#{$selector} {
+        &amp;resize {
+          @extend %frame-resize;
+        }
+      }
+    }
+  }
+
+  @at-root #{$selector} {
+    &amp;width {
+      &amp;_left {
+        margin: 0;
+      }
+
+      &amp;_right {
+        margin: 0 0 auto 0;
+      }
+    }
+  }
+
+  @at-root #{$id-selector} {
+    &amp;head,
+    &amp;foot {
+      &amp;-wrap {
+        position: relative;
+      }
+    }
+
+    &amp;main {
+      background-color: #fff;
+    }
+  }
+
+  .align {
+    @include align-prefix-rule();
+  }
+ }" data-collapsed="@mixin layout-frame-rule() { ... }"><code>@mixin layout-frame-rule() { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>generate layout frame rules</p></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[mixin]</span> <a href="#undefined-mixin-align-prefix-rule"><code>align-prefix-rule</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#undefined-function-rule-arguments"><code>rule-arguments</code></a></li></ul><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[mixin]</span> <a href="#undefined-mixin-layout-frame-child-rule"><code>layout-frame-child-rule</code></a></li></ul></section><section class="main__item container item" id="undefined-mixin-layout-frame-child-rule"><h3 class="item__heading"><a class="item__name" href="#mixin-layout-frame-child-rule">layout-frame-child-rule</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin layout-frame-child-rule() { 
+  @include layout-frame-rule(arguments($options, max-width, (parent-selector: unquote(&quot;#{&amp;}&quot;))))
+ }" data-collapsed="@mixin layout-frame-child-rule() { ... }"><code>@mixin layout-frame-child-rule() { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>generate layout frame rules as child selector</p></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[mixin]</span> <a href="#undefined-mixin-layout-frame-rule"><code>layout-frame-rule</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#undefined-function-arguments"><code>arguments</code></a></li></ul></section><section class="main__item container item" id="undefined-mixin-animate"><h3 class="item__heading"><a class="item__name" href="#mixin-animate">animate</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin animate($value: 0.3s, $delay) { 
+  $name: rand-string();
+  animation: $name $value;
+  @if ($delay) {
+    animation-delay: $delay;
+  }
+  @include frames($name) {
+    @content;
+  }
+ }" data-collapsed="@mixin animate($value: 0.3s, $delay) { ... }"><code>@mixin animate($value: 0.3s, $delay) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>set animation and keyframes</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$value</code></th><td data-label="desc"><p>the property value of animation</p></td><td data-label="type"><code></code></td><td data-label="default"><code>0.3s</code></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$delay</code></th><td data-label="desc"><p>the property value of animation-delay</p></td><td data-label="type"><code></code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Content</h3><p>This mixin allows extra content to be passed (through the <code>@content</code> directive). Role: keyframes</p><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#undefined-function-rand-string"><code>rand-string</code></a></li></ul></section><section class="main__item container item" id="undefined-mixin-align-prefix-rule"><h3 class="item__heading"><a class="item__name" href="#mixin-align-prefix-rule">align-prefix-rule</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin align-prefix-rule() { 
+    &amp;_left {
+      text-align: right;
+    }
+
+    &amp;_center {
+      text-align: center;
+    }
+
+    &amp;_right {
+      text-align: right;
+    }
+ }" data-collapsed="@mixin align-prefix-rule() { ... }"><code>@mixin align-prefix-rule() { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>text-align prefix</p></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[mixin]</span> <a href="#undefined-mixin-layout-frame-rule"><code>layout-frame-rule</code></a></li></ul></section><section class="main__item container item" id="undefined-mixin-inspect-theme"><h3 class="item__heading"><a class="item__name" href="#mixin-inspect-theme">inspect-theme</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin inspect-theme($map) { 
+  $palette: map-get($theme, palette);
+  $primary: pick($theme, primary);
+  $accent: pick($theme, accent);
+  $warn: pick($theme, warn);
+  $border: pick($theme, border);
+  $link: pick($theme, link);
+  $react: pick($theme, react);
+  $active: pick($theme, active);
+  $primary-accent: pick($theme, primary-accent);
+  $primary-warn: pick($theme, primary-warn);
+  $primary-border: pick($theme, primary-border);
+  $primary-text: pick($theme, primary-text);
+  $primary-link: pick($theme, primary-link);
+  $primary-react: pick($theme, primary-react);
+  $primary-active: pick($theme, primary-active);
+  $accent-warn: pick($theme, accent-warn);
+  $accent-border: pick($theme, accent-border);
+  $accent-text: pick($theme, accent-text);
+  $accent-link: pick($theme, accent-link);
+  $accent-react: pick($theme, accent-react);
+  $accent-active: pick($theme, accent-active);
+  $warn-border: pick($theme, warn-border);
+  $warn-text: pick($theme, warn-text);
+  $warn-link: pick($theme, warn-link);
+  $warn-react: pick($theme, warn-react);
+  $warn-active: pick($theme, warn-active);
+
+  @debug &#39;primary: #{ $primary}&#39;;
+  @debug &#39;accent: #{ $accent}&#39;;
+  @debug &#39;warn: #{ $warn}&#39;;
+  @debug &#39;border: #{ $border}&#39;;
+  @debug &#39;link: #{ $link}&#39;;
+  @debug &#39;react: #{ $react}&#39;;
+  @debug &#39;active: #{ $active}&#39;;
+  @debug &#39;primary-accent: #{ $primary-accent}&#39;;
+  @debug &#39;primary-warn: #{ $primary-warn}&#39;;
+  @debug &#39;primary-border: #{ $primary-border}&#39;;
+  @debug &#39;primary-text: #{ $primary-text}&#39;;
+  @debug &#39;primary-link: #{ $primary-link}&#39;;
+  @debug &#39;primary-react: #{ $primary-react}&#39;;
+  @debug &#39;primary-active: #{ $primary-active}&#39;;
+  @debug &#39;accent-warn: #{ $accent-warn}&#39;;
+  @debug &#39;accent-border: #{ $accent-border}&#39;;
+  @debug &#39;accent-text: #{ $accent-text}&#39;;
+  @debug &#39;accent-link: #{ $accent-link}&#39;;
+  @debug &#39;accent-react: #{ $accent-react}&#39;;
+  @debug &#39;accent-active: #{ $accent-active}&#39;;
+  @debug &#39;warn-border: #{ $warn-border}&#39;;
+  @debug &#39;warn-text: #{ $warn-text}&#39;;
+  @debug &#39;warn-link: #{ $warn-link}&#39;;
+  @debug &#39;warn-react: #{ $warn-react}&#39;;
+  @debug &#39;warn-active: #{ $warn-active}&#39;;
+ }" data-collapsed="@mixin inspect-theme($map) { ... }"><code>@mixin inspect-theme($map) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>debug theme values as debug</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$map</code></th><td data-label="desc"><p>theme</p></td><td data-label="type"><code></code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table></section></section><section class="main__sub-section" id="undefined-variable"><h2 class="main__heading--secondary"><div class="container">variables</div></h2><section class="main__item container item" id="undefined-variable-__layout-max-width-key"><h3 class="item__heading"><span class="item__access">[private]</span> <a class="item__name" href="#variable-__layout-max-width-key">__layout-max-width-key</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$__layout-max-width-key: 18 !default;</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>last key of width-map</p></div></section><section class="main__item container item" id="undefined-variable-__dot-prefix"><h3 class="item__heading"><span class="item__access">[private]</span> <a class="item__name" href="#variable-__dot-prefix">__dot-prefix</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$__dot-prefix: dot;</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>query prefix</p></div></section><section class="main__item container item" id="undefined-variable-__global_duration"><h3 class="item__heading"><span class="item__access">[private]</span> <a class="item__name" href="#variable-__global_duration">__global_duration</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$__global_duration: 0.3s !default;</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>default duration of animation, transition</p></div></section><section class="main__item container item" id="undefined-variable-DOT-THEME-DEFAULT-PALETTE-POLYFILL-MAP"><h3 class="item__heading"><a class="item__name" href="#variable-DOT-THEME-DEFAULT-PALETTE-POLYFILL-MAP">DOT-THEME-DEFAULT-PALETTE-POLYFILL-MAP</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$DOT-THEME-DEFAULT-PALETTE-POLYFILL-MAP: (
+        accent : (from: primary, method: 20%),
+        warn : (from: primary, method: invert),
+        border: primary,
+        link: text,
+        react: accent,
+        active: accent,
+        primary-accent: accent,
+        primary-warn: warn,
+        primary-border: primary,
+        primary-text: (from: primary, method: 50%),
+        primary-link: primary-text,
+        primary-react: primary-link,
+        primary-active: primary-react,
+        accent-warn: warn,
+        accent-border: accent,
+        accent-text: text,
+        accent-link: link,
+        accent-react: react,
+        accent-active: active,
+        warn-border: warn,
+        warn-text: text,
+        warn-link: link,
+        warn-react: react,
+        warn-active: active
+) !default;</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>required: primary, field, text</p></div><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[function]</span> <a href="#undefined-function-palette"><code>palette</code></a></li></ul></section><section class="main__item container item" id="undefined-variable-dot-global-themes"><h3 class="item__heading"><a class="item__name" href="#variable-dot-global-themes">dot-global-themes</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$dot-global-themes: ();</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>create global theme</p></div></section><section class="main__item container item" id="undefined-variable-dot-global-theme-name"><h3 class="item__heading"><a class="item__name" href="#variable-dot-global-theme-name">dot-global-theme-name</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$dot-global-theme-name: primary;</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>if not throw the theme on theme related function and mixins. will use this to the theme name to get theme.</p></div><h3 class="item__sub-heading">Type</h3><p><code>String</code></p></section></section><section class="main__sub-section" id="undefined-function"><h2 class="main__heading--secondary"><div class="container">functions</div></h2><section class="main__item container item" id="undefined-function-is-string"><h3 class="item__heading"><a class="item__name" href="#function-is-string">is-string</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function is-string() { 
+  @return type-of($value) == string;
+ }" data-collapsed="@function is-string() { ... }"><code>@function is-string() { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>is type of string</p></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>Boolean</code></div><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[function]</span> <a href="#undefined-function-is-numeric"><code>is-numeric</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#undefined-function-to-number"><code>to-number</code></a></li></ul></section><section class="main__item container item" id="undefined-function-is-number"><h3 class="item__heading"><a class="item__name" href="#function-is-number">is-number</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function is-number() { 
+  @return type-of($value) == number;
+ }" data-collapsed="@function is-number() { ... }"><code>@function is-number() { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>is type of number</p></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>Boolean</code></div><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[function]</span> <a href="#undefined-function-is-numeric"><code>is-numeric</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#undefined-function-to-number"><code>to-number</code></a></li></ul></section><section class="main__item container item" id="undefined-function-is-numeric"><h3 class="item__heading"><a class="item__name" href="#function-is-numeric">is-numeric</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function is-numeric() { 
+  @return is-number($value) or is-string($value);
+ }" data-collapsed="@function is-numeric() { ... }"><code>@function is-numeric() { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>is type of number or string as number</p></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>Boolean</code></div><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#undefined-function-is-number"><code>is-number</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#undefined-function-is-string"><code>is-string</code></a></li></ul></section><section class="main__item container item" id="undefined-function-is-list"><h3 class="item__heading"><a class="item__name" href="#function-is-list">is-list</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function is-list() { 
+  @return type-of($target) == list;
+ }" data-collapsed="@function is-list() { ... }"><code>@function is-list() { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>is type of list</p></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>Boolean</code></div></section><section class="main__item container item" id="undefined-function-is-map"><h3 class="item__heading"><a class="item__name" href="#function-is-map">is-map</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function is-map() { 
+  $type: type-of($map);
+  @return $type == map or ($type == list and length($map) == 0);
+ }" data-collapsed="@function is-map() { ... }"><code>@function is-map() { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>is type of map</p></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>Boolean</code></div><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[function]</span> <a href="#undefined-function-is-not-map"><code>is-not-map</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#undefined-function-arguments"><code>arguments</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#undefined-function-args"><code>args</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#undefined-function-rand"><code>rand</code></a></li></ul></section><section class="main__item container item" id="undefined-function-is-not-map"><h3 class="item__heading"><a class="item__name" href="#function-is-not-map">is-not-map</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function is-not-map() { 
+  @return not is-map($map);
+ }" data-collapsed="@function is-not-map() { ... }"><code>@function is-not-map() { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>is not type of map</p></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>Boolean</code></div><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#undefined-function-is-map"><code>is-map</code></a></li></ul><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[function]</span> <a href="#undefined-function-arguments"><code>arguments</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#undefined-function-arguments"><code>arguments</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#undefined-function-args"><code>args</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#undefined-function-args"><code>args</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#undefined-function-map-initiate"><code>map-initiate</code></a></li></ul></section><section class="main__item container item item--deprecated" id="undefined-function-arguments"><h3 class="item__heading"><a class="item__name" href="#function-arguments">arguments</a></h3><div class="item__deprecated"><strong>Deprecated!</strong></div><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function arguments() { 
+  @if $merge {
+    @if is-not-map($merge) {
+      @error map-type-error(merge);
+    }
+  } @else if is-map($shorten-index) {
+    $merge: $shorten-index;
+    $shorten-index: $__argments-shorten-index;
+  }
+
+  @if $args == null {
+    @if $merge {
+      @return $merge;
+    }
+    @return (--arguments--: false);
+  } @else if is-not-map($args) {
+    @if $shorten-index {
+      $args: ($shorten-index: $args);
+    } @else {
+      @debug $args;
+      @error type-error(options);
+    }
+  }
+
+  @return if($merge, map-merge($args, $merge), $args);
+ }" data-collapsed="@function arguments() { ... }"><code>@function arguments() { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>get arguments as can shorten mapping</p></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#undefined-function-is-not-map"><code>is-not-map</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#undefined-function-is-map"><code>is-map</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#undefined-function-is-not-map"><code>is-not-map</code></a></li></ul><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[mixin]</span> <a href="#undefined-mixin-layout-frame-child-rule"><code>layout-frame-child-rule</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#undefined-function-rule-arguments"><code>rule-arguments</code></a></li></ul></section><section class="main__item container item" id="undefined-function-args"><h3 class="item__heading"><a class="item__name" href="#function-args">args</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function args() { 
+  @if $merge {
+    @if is-not-map($merge) {
+      @error map-type-error(merge);
+    }
+  } @else if is-map($shorten-index) {
+    $merge: $shorten-index;
+    $shorten-index: $__args-shorten-index;
+  }
+
+  @if $args == null {
+    @if $merge {
+      @return $merge;
+    }
+    @return ();
+  } @else if is-not-map($args) {
+    @if $shorten-index {
+      $args: ($shorten-index: $args);
+    } @else {
+      @error map-type-error(args)
+    }
+  }
+
+  @return if($merge, map-merge($args, $merge), $args);
+ }" data-collapsed="@function args() { ... }"><code>@function args() { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>get arguments as can shorten mapping</p></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#undefined-function-is-not-map"><code>is-not-map</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#undefined-function-is-map"><code>is-map</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#undefined-function-is-not-map"><code>is-not-map</code></a></li></ul><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[function]</span> <a href="#undefined-function-rule-args"><code>rule-args</code></a></li></ul></section><section class="main__item container item" id="undefined-function-rule-args"><h3 class="item__heading"><a class="item__name" href="#function-rule-args">rule-args</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function rule-args() { 
+  $args: args($args, $shorten-index);
+
+  $query: map-get($args, query);
+  $parent-query: map-get-if($args, parent-query);
+  $sub-query: map-get-if($args, sub-query, $sub-query);
+
+  @if $query {
+    @if $parent-query {
+      $query: $parent-query + $query;
+    }
+  } @else {
+    @if $sub-query {
+      @if $parent-query {
+        $query: $parent-query + $sub-query;
+      } @else {
+        $query: dot-class($sub-query);
+      }
+    } @else {
+      @if $parent-query {
+        $query: $parent-query;
+      } @else {
+        $query: dot-class();
+      }
+    }
+  }
+
+  @if starts-with($query, &#39;.&#39;) or starts-with($query, &#39;#&#39;) {
+    $args: map-set($args, query-string, str-slice($query, 2, str-length($query)));
+  } @else {
+    $args: map-set($args, query-string, $query);
+    $query: unquote(&#39;#{&#39;.&#39;} + $query&#39;);
+  }
+
+  @return map-set($args, query, $query);
+ }" data-collapsed="@function rule-args() { ... }"><code>@function rule-args() { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>get arguments as can shorten mapping adding the query value for rule selector</p></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#undefined-function-args"><code>args</code></a></li></ul></section><section class="main__item container item item--deprecated" id="undefined-function-rule-arguments"><h3 class="item__heading"><a class="item__name" href="#function-rule-arguments">rule-arguments</a></h3><div class="item__deprecated"><strong>Deprecated!</strong></div><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function rule-arguments() { 
+  $args: arguments($args, $shorten-index);
+
+  $selector: map-get($args, selector);
+  $parent-selector: map-get-if($args, parent-selector);
+  $sub-selector: map-get-if($args, sub-selector, $sub-selector);
+
+  @if ($selector) {
+    @if ($parent-selector) {
+      $selector: $parent-selector + $selector;
+    }
+  } @else {
+    @if ($sub-selector) {
+      @if ($parent-selector) {
+        $selector: $parent-selector + $sub-selector;
+      } @else {
+        $selector: dot-class_d($sub-selector);
+      }
+    } @else {
+      @if ($parent-selector) {
+        $selector: $parent-selector;
+      } @else {
+        $selector: dot-class_d();
+      }
+    }
+  }
+
+  @if (starts-with($selector, &#39;.&#39;) or starts-with($selector, &#39;#&#39;)) {
+    $args: map-set($args, selector-string, str-slice($selector, 2, str-length($selector)));
+  } @else {
+    $args: map-set($args, selector-string, $selector);
+    $selector: #{&#39;.&#39;+$selector};
+  }
+
+  @return map-set($args, selector, $selector);
+ }" data-collapsed="@function rule-arguments() { ... }"><code>@function rule-arguments() { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#undefined-function-arguments"><code>arguments</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#undefined-function-dot-class_d"><code>dot-class_d</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#undefined-function-dot-class_d"><code>dot-class_d</code></a></li></ul><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[mixin]</span> <a href="#undefined-mixin-layout-frame-rule"><code>layout-frame-rule</code></a></li></ul></section><section class="main__item container item" id="undefined-function-rand"><h3 class="item__heading"><a class="item__name" href="#function-rand">rand</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function rand($value) { 
+  @if is-map($value) {
+    $keys: map-keys($value);
+    $key: nth($keys, random(length($keys)));
+    @return map-get($value, $key);
+  } @else {
+    @return nth($value, length($value));
+  }
+ }" data-collapsed="@function rand($value) { ... }"><code>@function rand($value) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>random value of list or map</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$value</code></th><td data-label="desc">&mdash;<span class="visually-hidden"> none</span></td><td data-label="type"><code>List</code> or <code>Map</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#undefined-function-is-map"><code>is-map</code></a></li></ul><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[function]</span> <a href="#undefined-function-rand-string"><code>rand-string</code></a></li></ul></section><section class="main__item container item" id="undefined-function-rand-string"><h3 class="item__heading"><a class="item__name" href="#function-rand-string">rand-string</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function rand-string($size) { 
+  $result: rand($__alphabets);
+  $size: $size - 1;
+  $length: length($__chars);
+  @while ($size &gt; 0) {
+    $result: $result + nth($__chars, random($length));
+    $size: $size - 1;
+  }
+  @return $result;
+ }" data-collapsed="@function rand-string($size) { ... }"><code>@function rand-string($size) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>generate random string</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$size</code></th><td data-label="desc"><p>the string length</p></td><td data-label="type"><code>Number</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>String</code></div><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#undefined-function-rand"><code>rand</code></a></li></ul><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[mixin]</span> <a href="#undefined-mixin-animate"><code>animate</code></a></li></ul></section><section class="main__item container item" id="undefined-function-dot-query_d"><h3 class="item__heading"><a class="item__name" href="#function-dot-query_d">dot-query_d</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function dot-query_d($selector: &#39;&#39;) { 
+  @return if($selector, dot-#{$selector}, dot);
+ }" data-collapsed="@function dot-query_d($selector: &#39;&#39;) { ... }"><code>@function dot-query_d($selector: &#39;&#39;) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>cssdot selector string</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$selector</code></th><td data-label="desc"><p>selector prefix after cssdot prefix</p></td><td data-label="type"><code>String</code></td><td data-label="default"><code>&#39;&#39;</code></td></tr></tbody></table><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>String</code></div><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[function]</span> <a href="#undefined-function-dot-class_d"><code>dot-class_d</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#undefined-function-dot-id_d"><code>dot-id_d</code></a></li></ul></section><section class="main__item container item" id="undefined-function-dot-class_d"><h3 class="item__heading"><a class="item__name" href="#function-dot-class_d">dot-class_d</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function dot-class_d($selector: &#39;&#39;) { 
+  @return unquote(&quot;#{&quot;.&quot; + dot-query_d($selector)}&quot;);
+ }" data-collapsed="@function dot-class_d($selector: &#39;&#39;) { ... }"><code>@function dot-class_d($selector: &#39;&#39;) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>cssdot class selector</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$selector</code></th><td data-label="desc"><p>selector prefix after cssdot prefix</p></td><td data-label="type"><code>String</code></td><td data-label="default"><code>&#39;&#39;</code></td></tr></tbody></table><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>String</code></div><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#undefined-function-dot-query_d"><code>dot-query_d</code></a></li></ul><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[function]</span> <a href="#undefined-function-rule-arguments"><code>rule-arguments</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#undefined-function-rule-arguments"><code>rule-arguments</code></a></li></ul></section><section class="main__item container item item--deprecated" id="undefined-function-dot-id_d"><h3 class="item__heading"><a class="item__name" href="#function-dot-id_d">dot-id_d</a></h3><div class="item__deprecated"><strong>Deprecated!</strong></div><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function dot-id_d($selector: &#39;&#39;) { 
+  @return unquote(&quot;#{&quot;#&quot; + dot-query_d($selector)}&quot;);
+ }" data-collapsed="@function dot-id_d($selector: &#39;&#39;) { ... }"><code>@function dot-id_d($selector: &#39;&#39;) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>cssdot id selector</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$selector</code></th><td data-label="desc"><p>selector prefix after cssdot prefix</p></td><td data-label="type"><code>String</code></td><td data-label="default"><code>&#39;&#39;</code></td></tr></tbody></table><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>String</code></div><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#undefined-function-dot-query_d"><code>dot-query_d</code></a></li></ul></section><section class="main__item container item" id="undefined-function-dot-id"><h3 class="item__heading"><a class="item__name" href="#function-dot-id">dot-id</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function dot-id() { 
+  @return unquote(&quot;#{&quot;#&quot; + dot-prefix($query)}&quot;)
+ }" data-collapsed="@function dot-id() { ... }"><code>@function dot-id() { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>prefixed id query</p></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p></section><section class="main__item container item" id="undefined-function-map-initiate"><h3 class="item__heading"><a class="item__name" href="#function-map-initiate">map-initiate</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function map-initiate($map, $required, $index) { 
+  @if is-not-map($map){
+    @if($sugar-index){
+      @return ($sugar-index: $map);
+    }
+    @error map-type-error()
+  }
+
+  @if $required {
+    @if is-not-list($map) {
+      $required: ($required);
+    }
+
+
+    @each $index in $required {
+      @if map-has-not-key($map, $index){
+        @error __type-has-not($index);
+      }
+    }
+  }
+
+  @return $map;
+ }" data-collapsed="@function map-initiate($map, $required, $index) { ... }"><code>@function map-initiate($map, $required, $index) { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$map</code></th><td data-label="desc">&mdash;<span class="visually-hidden"> none</span></td><td data-label="type"><code>Any</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$required</code></th><td data-label="desc">&mdash;<span class="visually-hidden"> none</span></td><td data-label="type"><code>Any</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$index</code></th><td data-label="desc"><p>if $map is not a map, create new map that $index has $map</p></td><td data-label="type"><code>Any</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>Map</code></div><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#undefined-function-is-not-map"><code>is-not-map</code></a></li></ul><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[function]</span> <a href="#undefined-function-palette"><code>palette</code></a></li></ul></section><section class="main__item container item" id="undefined-function-char-at"><h3 class="item__heading"><a class="item__name" href="#function-char-at">char-at</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function char-at($string, $index) { 
+  @if ($index &lt; 1) {
+    @warn __type-min(1);
+  }
+  @return str-slice($string, $index, $index);
+ }" data-collapsed="@function char-at($string, $index) { ... }"><code>@function char-at($string, $index) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>get character by index from string</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$string</code></th><td data-label="desc">&mdash;<span class="visually-hidden"> none</span></td><td data-label="type"><code>String</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$index</code></th><td data-label="desc"><p>the string index</p></td><td data-label="type"><code>Number</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[function]</span> <a href="#undefined-function-to-number"><code>to-number</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#undefined-function-to-number"><code>to-number</code></a></li></ul></section><section class="main__item container item" id="undefined-function-to-length"><h3 class="item__heading"><a class="item__name" href="#function-to-length">to-length</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function to-length($value, $unit) { 
+  @if not index($__units, $unit) {
+    @warn &#39;Invalid unit `#{$unit}`.&#39;;
+  }
+
+  @return $value * map-get($__units, $unit);
+ }" data-collapsed="@function to-length($value, $unit) { ... }"><code>@function to-length($value, $unit) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>string unit to number unit</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$value</code></th><td data-label="desc"><p>the has a unit</p></td><td data-label="type"><code>String</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$unit</code></th><td data-label="desc"><p>the css unit</p></td><td data-label="type"><code>String</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[function]</span> <a href="#undefined-function-to-number"><code>to-number</code></a></li></ul></section><section class="main__item container item" id="undefined-function-to-number"><h3 class="item__heading"><a class="item__name" href="#function-to-number">to-number</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function to-number($value, $remove-unit) { 
+  @if is-number($value) {
+    @return $value;
+  } @else if not is-string($value) {
+    @warn __type-numeric();
+  }
+
+  $result: 0;
+  $digits: 0;
+  $minus: char-at($value, 1) == &#39;-&#39;;
+  @for $i from if($minus, 2, 1) through str-length($value) {
+    $char: char-at($value, $i);
+    $is-float: $char == &#39;.&#39;;
+    @if not (__number-index($char) or $is-float) {
+      $result: if($minus, -$result, $result);
+      @return if($remove-unit, $result, to-length($result, str-slice($value, $i)));
+    }
+    @if $is-float {
+      $digits: 1;
+    } @else {
+      @if $digits == 0 {
+        $result: $result * 10 + __number($char);
+      } @else {
+        $digits: $digits * 10;
+        $result: $result + __number($char) / $digits;
+      }
+    }
+  }
+
+  @return if($minus, -$result, $result);
+ }" data-collapsed="@function to-number($value, $remove-unit) { ... }"><code>@function to-number($value, $remove-unit) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>string to number</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$value</code></th><td data-label="desc">&mdash;<span class="visually-hidden"> none</span></td><td data-label="type"><code>String</code> or <code>Value</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$remove-unit</code></th><td data-label="desc"><p>the return without unit</p></td><td data-label="type"><code>Boolean</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#undefined-function-is-number"><code>is-number</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#undefined-function-is-string"><code>is-string</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#undefined-function-char-at"><code>char-at</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#undefined-function-char-at"><code>char-at</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#undefined-function-to-length"><code>to-length</code></a></li></ul></section><section class="main__item container item" id="undefined-function-str-replace"><h3 class="item__heading"><a class="item__name" href="#function-str-replace">str-replace</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function str-replace($string, $search, $replace) { 
+  $string: inspect($string);
+  $index: str-index($string, $search);
+
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+
+  @return $string;
+ }" data-collapsed="@function str-replace($string, $search, $replace) { ... }"><code>@function str-replace($string, $search, $replace) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Replace <code>$search</code> with <code>$replace</code> in <code>$string</code></p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$string</code></th><td data-label="desc"><p>Initial string</p></td><td data-label="type"><code>String</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$search</code></th><td data-label="desc"><p>Substring to replace</p></td><td data-label="type"><code>String</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$replace</code></th><td data-label="desc"><p>(&#39;&#39;) - New value</p></td><td data-label="type"><code>String</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>String</code> &mdash;<p>Updated string</p></div></section><section class="main__item container item" id="undefined-function--add"><h3 class="item__heading"><span class="item__access">[private]</span> <a class="item__name" href="#function--add">-add</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function -add($prefix, $list) { 
+  @if $prefix {
+    $prefix: unquote($prefix+&#39;-&#39;);
+  } @else {
+    $prefix: unquote(&#39;&#39;);
+  }
+
+  $result: ();
+  @each $value in $list {
+    $result: comma($result, unquote(&quot;#{$prefix}#{$value}&quot;));
+  }
+  @return $result;
+ }" data-collapsed="@function -add($prefix, $list) { ... }"><code>@function -add($prefix, $list) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>mixing prefix and each suffixes</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$prefix</code></th><td data-label="desc">&mdash;<span class="visually-hidden"> none</span></td><td data-label="type"><code>String</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$list</code></th><td data-label="desc">&mdash;<span class="visually-hidden"> none</span></td><td data-label="type"><code>List</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>List</code></div><h3 class="item__sub-heading">Example</h3><div class="item__example example"><pre class="example__code language-scss"><code>(a, b c) = a-b, a-c</code></pre></div><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[function]</span> <a href="#undefined-function--c"><code>-c</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#undefined-function--bg-c"><code>-bg-c</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#undefined-function--bg-c"><code>-bg-c</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#undefined-function--ls"><code>-ls</code></a></li></ul></section><section class="main__item container item" id="undefined-function--mix"><h3 class="item__heading"><span class="item__access">[private]</span> <a class="item__name" href="#function--mix">-mix</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function -mix($prefixes, $prefixes) { 
+  $result: ();
+
+  $prefixes: to-list($prefixes);
+  $suffixes: to-list($suffixes);
+
+  @each $prefix in $prefixes {
+    $prefix: if(is-empty($prefix), &#39;&#39;, unquote($prefix+&#39;-&#39;));
+    @each $suffix in $suffixes {
+      $result: append($result, #{$prefix}#{$suffix}, comma);
+    }
+  }
+  @return $result;
+ }" data-collapsed="@function -mix($prefixes, $prefixes) { ... }"><code>@function -mix($prefixes, $prefixes) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>mixing each prefixes and each suffixes</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$prefixes</code></th><td data-label="desc">&mdash;<span class="visually-hidden"> none</span></td><td data-label="type"><code>List</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$prefixes</code></th><td data-label="desc">&mdash;<span class="visually-hidden"> none</span></td><td data-label="type"><code>List</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>List</code></div><h3 class="item__sub-heading">Example</h3><div class="item__example example"><pre class="example__code language-scss"><code>(a b, c d) = a-c, a-d, b-c, b-d</code></pre></div></section><section class="main__item container item" id="undefined-function--get"><h3 class="item__heading"><span class="item__access">[private]</span> <a class="item__name" href="#function--get">-get</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function -get($prop) { 
+  $result: map-get($-props, $prop);
+  @return $result;
+ }" data-collapsed="@function -get($prop) { ... }"><code>@function -get($prop) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>get shorten property names</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$prop</code></th><td data-label="desc">&mdash;<span class="visually-hidden"> none</span></td><td data-label="type"><code>String</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>List</code></div><h3 class="item__sub-heading">Example</h3><div class="item__example example"><pre class="example__code language-scss"><code>color = (c, color)</code></pre></div><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[function]</span> <a href="#undefined-function--c"><code>-c</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#undefined-function--bg-c"><code>-bg-c</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#undefined-function--bg-c"><code>-bg-c</code></a></li><li><span class="item__cross-type">[function]</span> <a href="#undefined-function--ls"><code>-ls</code></a></li></ul></section><section class="main__item container item" id="undefined-function--c"><h3 class="item__heading"><span class="item__access">[private]</span> <a class="item__name" href="#function--c">-c</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function -c() { 
+  @return -add($prefix, -get(color));
+ }" data-collapsed="@function -c() { ... }"><code>@function -c() { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>List</code></div><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#undefined-function--add"><code>-add</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#undefined-function--get"><code>-get</code></a></li></ul></section><section class="main__item container item" id="undefined-function--bg-c"><h3 class="item__heading"><span class="item__access">[private]</span> <a class="item__name" href="#function--bg-c">-bg-c</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function -bg-c() { 
+  @return -add($prefix, -get(border));
+ }" data-collapsed="@function -bg-c() { ... }"><code>@function -bg-c() { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>List</code></div><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#undefined-function--add"><code>-add</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#undefined-function--get"><code>-get</code></a></li></ul></section><section class="main__item container item" id="undefined-function--bg-c"><h3 class="item__heading"><span class="item__access">[private]</span> <a class="item__name" href="#function--bg-c">-bg-c</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function -bg-c() { 
+  @return -add($prefix, -get(background-color));
+ }" data-collapsed="@function -bg-c() { ... }"><code>@function -bg-c() { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>List</code></div><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#undefined-function--add"><code>-add</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#undefined-function--get"><code>-get</code></a></li></ul></section><section class="main__item container item" id="undefined-function--ls"><h3 class="item__heading"><span class="item__access">[private]</span> <a class="item__name" href="#function--ls">-ls</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function -ls() { 
+  @return -add($prefix, -get(letter-spacing));
+ }" data-collapsed="@function -ls() { ... }"><code>@function -ls() { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>List</code></div><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#undefined-function--add"><code>-add</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#undefined-function--get"><code>-get</code></a></li></ul></section><section class="main__item container item" id="undefined-function-palette"><h3 class="item__heading"><a class="item__name" href="#function-palette">palette</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function palette($colors) { 
+  $colors: map-initiate($colors, null, primary);
+
+  // set default colors
+  @each $key, $value in $DOT-THEME-DEFAULT-PALETTE {
+    @if map-has-not-key($colors, $key) {
+      $colors: map-set($colors, $key, $value);
+    }
+  }
+
+  // fill default polyfill map
+  $colors: palette-polyfill($colors, $DOT-THEME-DEFAULT-PALETTE-POLYFILL-MAP);
+  @return $colors;
+ }" data-collapsed="@function palette($colors) { ... }"><code>@function palette($colors) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>make theme palette</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$colors</code></th><td data-label="desc">&mdash;<span class="visually-hidden"> none</span></td><td data-label="type"><code>Map</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr></tbody></table><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#undefined-function-map-initiate"><code>map-initiate</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[variable]</span> <a href="#undefined-variable-DOT-THEME-DEFAULT-PALETTE-POLYFILL-MAP"><code>DOT-THEME-DEFAULT-PALETTE-POLYFILL-MAP</code></a></li></ul></section><section class="main__item container item" id="undefined-function--primary"><h3 class="item__heading"><a class="item__name" href="#function--primary">-primary</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function -primary() { 
+  @return pick($theme, &#39;primary&#39;, $level);
+ }" data-collapsed="@function -primary() { ... }"><code>@function -primary() { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p></section><section class="main__item container item" id="undefined-function--accent"><h3 class="item__heading"><a class="item__name" href="#function--accent">-accent</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function -accent() { 
+  @return pick($theme, &#39;accent&#39;, $level);
+ }" data-collapsed="@function -accent() { ... }"><code>@function -accent() { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p></section><section class="main__item container item" id="undefined-function--warn"><h3 class="item__heading"><a class="item__name" href="#function--warn">-warn</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function -warn() { 
+  @return pick($theme, &#39;warn&#39;, $level);
+ }" data-collapsed="@function -warn() { ... }"><code>@function -warn() { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p></section><section class="main__item container item" id="undefined-function--border"><h3 class="item__heading"><a class="item__name" href="#function--border">-border</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function -border() { 
+  @return pick($theme, &#39;border&#39;, $level);
+ }" data-collapsed="@function -border() { ... }"><code>@function -border() { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p></section><section class="main__item container item" id="undefined-function--link"><h3 class="item__heading"><a class="item__name" href="#function--link">-link</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function -link() { 
+  @return pick($theme, &#39;link&#39;, $level);
+ }" data-collapsed="@function -link() { ... }"><code>@function -link() { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p></section><section class="main__item container item" id="undefined-function--react"><h3 class="item__heading"><a class="item__name" href="#function--react">-react</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function -react() { 
+  @return pick($theme, &#39;react&#39;, $level);
+ }" data-collapsed="@function -react() { ... }"><code>@function -react() { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p></section><section class="main__item container item" id="undefined-function--active"><h3 class="item__heading"><a class="item__name" href="#function--active">-active</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function -active() { 
+  @return pick($theme, &#39;active&#39;, $level);
+ }" data-collapsed="@function -active() { ... }"><code>@function -active() { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p></section><section class="main__item container item" id="undefined-function--primary-accent"><h3 class="item__heading"><a class="item__name" href="#function--primary-accent">-primary-accent</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function -primary-accent() { 
+  @return pick($theme, &#39;primary-accent&#39;, $level);
+ }" data-collapsed="@function -primary-accent() { ... }"><code>@function -primary-accent() { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p></section><section class="main__item container item" id="undefined-function--primary-warn"><h3 class="item__heading"><a class="item__name" href="#function--primary-warn">-primary-warn</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function -primary-warn() { 
+  @return pick($theme, &#39;primary-warn&#39;, $level);
+ }" data-collapsed="@function -primary-warn() { ... }"><code>@function -primary-warn() { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p></section><section class="main__item container item" id="undefined-function--primary-border"><h3 class="item__heading"><a class="item__name" href="#function--primary-border">-primary-border</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function -primary-border() { 
+  @return pick($theme, &#39;primary-border&#39;, $level);
+ }" data-collapsed="@function -primary-border() { ... }"><code>@function -primary-border() { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p></section><section class="main__item container item" id="undefined-function--primary-text"><h3 class="item__heading"><a class="item__name" href="#function--primary-text">-primary-text</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function -primary-text() { 
+  @return pick($theme, &#39;primary-text&#39;, $level);
+ }" data-collapsed="@function -primary-text() { ... }"><code>@function -primary-text() { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p></section><section class="main__item container item" id="undefined-function--primary-link"><h3 class="item__heading"><a class="item__name" href="#function--primary-link">-primary-link</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function -primary-link() { 
+  @return pick($theme, &#39;primary-link&#39;, $level);
+ }" data-collapsed="@function -primary-link() { ... }"><code>@function -primary-link() { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p></section><section class="main__item container item" id="undefined-function--primary-react"><h3 class="item__heading"><a class="item__name" href="#function--primary-react">-primary-react</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function -primary-react() { 
+  @return pick($theme, &#39;primary-react&#39;, $level);
+ }" data-collapsed="@function -primary-react() { ... }"><code>@function -primary-react() { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p></section><section class="main__item container item" id="undefined-function--primary-active"><h3 class="item__heading"><a class="item__name" href="#function--primary-active">-primary-active</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function -primary-active() { 
+  @return pick($theme, &#39;primary-active&#39;, $level);
+ }" data-collapsed="@function -primary-active() { ... }"><code>@function -primary-active() { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p></section><section class="main__item container item" id="undefined-function--accent-warn"><h3 class="item__heading"><a class="item__name" href="#function--accent-warn">-accent-warn</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function -accent-warn() { 
+  @return pick($theme, &#39;accent-warn&#39;, $level);
+ }" data-collapsed="@function -accent-warn() { ... }"><code>@function -accent-warn() { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p></section><section class="main__item container item" id="undefined-function--accent-border"><h3 class="item__heading"><a class="item__name" href="#function--accent-border">-accent-border</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function -accent-border() { 
+  @return pick($theme, &#39;accent-border&#39;, $level);
+ }" data-collapsed="@function -accent-border() { ... }"><code>@function -accent-border() { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p></section><section class="main__item container item" id="undefined-function--accent-text"><h3 class="item__heading"><a class="item__name" href="#function--accent-text">-accent-text</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function -accent-text() { 
+  @return pick($theme, &#39;accent-text&#39;, $level);
+ }" data-collapsed="@function -accent-text() { ... }"><code>@function -accent-text() { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p></section><section class="main__item container item" id="undefined-function--accent-link"><h3 class="item__heading"><a class="item__name" href="#function--accent-link">-accent-link</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function -accent-link() { 
+  @return pick($theme, &#39;accent-link&#39;, $level);
+ }" data-collapsed="@function -accent-link() { ... }"><code>@function -accent-link() { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p></section><section class="main__item container item" id="undefined-function--accent-react"><h3 class="item__heading"><a class="item__name" href="#function--accent-react">-accent-react</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function -accent-react() { 
+  @return pick($theme, &#39;accent-react&#39;, $level);
+ }" data-collapsed="@function -accent-react() { ... }"><code>@function -accent-react() { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p></section><section class="main__item container item" id="undefined-function--accent-active"><h3 class="item__heading"><a class="item__name" href="#function--accent-active">-accent-active</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function -accent-active() { 
+  @return pick($theme, &#39;accent-active&#39;, $level);
+ }" data-collapsed="@function -accent-active() { ... }"><code>@function -accent-active() { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p></section><section class="main__item container item" id="undefined-function--warn-border"><h3 class="item__heading"><a class="item__name" href="#function--warn-border">-warn-border</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function -warn-border() { 
+  @return pick($theme, &#39;warn-border&#39;, $level);
+ }" data-collapsed="@function -warn-border() { ... }"><code>@function -warn-border() { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p></section><section class="main__item container item" id="undefined-function--warn-text"><h3 class="item__heading"><a class="item__name" href="#function--warn-text">-warn-text</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function -warn-text() { 
+  @return pick($theme, &#39;warn-text&#39;, $level);
+ }" data-collapsed="@function -warn-text() { ... }"><code>@function -warn-text() { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p></section><section class="main__item container item" id="undefined-function--warn-link"><h3 class="item__heading"><a class="item__name" href="#function--warn-link">-warn-link</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function -warn-link() { 
+  @return pick($theme, &#39;warn-link&#39;, $level);
+ }" data-collapsed="@function -warn-link() { ... }"><code>@function -warn-link() { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p></section><section class="main__item container item" id="undefined-function--warn-react"><h3 class="item__heading"><a class="item__name" href="#function--warn-react">-warn-react</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function -warn-react() { 
+  @return pick($theme, &#39;warn-react&#39;, $level);
+ }" data-collapsed="@function -warn-react() { ... }"><code>@function -warn-react() { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p></section><section class="main__item container item" id="undefined-function--warn-active"><h3 class="item__heading"><a class="item__name" href="#function--warn-active">-warn-active</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function -warn-active() { 
+  @return pick($theme, &#39;warn-active&#39;, $level);
+ }" data-collapsed="@function -warn-active() { ... }"><code>@function -warn-active() { ... }</code></pre></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p></section></section></section><footer class="footer" role="contentinfo"><div class="container"><div class="footer__project-info project-info"><!-- Name and URL --> <a class="project-info__name" href="https://github.com/lisslet/cssdot#readme">@lisslet/cssdot</a><!-- Version --> <span class="project-info__version">- v32.3.19</span><!-- License --> <span class="project-info__license">, under MIT</span></div><a class="footer__watermark" href="http://sassdoc.com"><img src="assets/images/logo_light_inline.svg" alt="SassDoc Logo"></a></div></footer></article><script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script><script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script><script src="assets/js/main.min.js"></script></body></html>

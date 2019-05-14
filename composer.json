@@ -1,0 +1,27 @@
+{
+    "name": "lisslet/glam",
+    "description": "Gnu Board draw the Line As Modern",
+    "authors": [
+        {
+            "name": "protyliss",
+            "email": "protyliss@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Glam\\": "glam/"
+        },
+        "files": [
+        ]
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../../../lisslet/phpdot"
+        }
+    ],
+    "require": {
+        "php": ">=7.1.4",
+        "lisslet/phpdot": "@dev"
+    }
+}

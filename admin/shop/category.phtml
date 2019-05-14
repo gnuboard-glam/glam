@@ -1,0 +1,22 @@
+<?php
+    // todo make depth in list
+?>
+<?= formOpen('./category-action.php') ?>
+<?= formSubmitOnly() ?>
+<?= tableOpen([
+	'분류명',
+	'클래스명'
+]) ?>
+<tbody>
+<?php foreach ($categories as $category): ?>
+    <tr>
+        <td>
+			<?= input('name[' . $category['ca_id'] . ']', $category['ca_name']) ?>
+        </td>
+		<?= tdInput('slug[' . $category['ca_id'] . ']', $category['slug']) ?>
+    </tr>
+<?php endforeach ?>
+</tbody>
+<?= tableClose ?>
+
+<?= formClose ?>

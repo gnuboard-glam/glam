@@ -1,0 +1,56 @@
+<?php
+/**
+ * @global $glam Glam\GlamRentalAdmin
+ */
+?>
+<?= formOpen('./types-action.php') ?>
+<?= formSubmitOnly() ?>
+
+<?= tableOpen(array_merge([
+	'상품명',
+	'상품 사진',
+	'모델명',
+	'순서',
+	'판매',
+	'품절',
+], $glam->_shopTypeLabels)) ?>
+<?php foreach ($products as $product) {
+	$id = $product['it_id'];
+	?>
+    <tr>
+        <th>
+            <input type="hidden" name="id[]" value="<?= $id ?>">
+			<?= $product['it_name'] ?>
+        </th>
+        <td>
+            <img src="<?= $product['cdn_images']['jpg'][0] ?>" width="50px">
+        </td>
+        <td><?= $product['it_model'] ?></td>
+		<?= tdNumber('order[' . $id . ']', $product['it_order'], ['required' => 'true']) ?>
+        <td>
+            <label>
+                <input type="checkbox" name="use[<?= $id ?>]" <?= checked($product['it_use']) ?>>
+                판매
+            </label>
+        </td>
+        <td>
+            <label>
+                <input type="checkbox" name="soldout[<?= $id ?>]" <?= checked($product['it_soldout']) ?>>
+                품절
+            </label>
+        </td>
+		<?php foreach ($glam->_shopTypeLabels as $type => $label): ?>
+            <td>
+                <label>
+                    <input type="checkbox"
+                           name="type<?= $type ?>[<?= $id ?>]" <?= checked($product['it_type' . $type]) ?>>
+					<?= $label ?>
+                </label>
+            </td>
+		<?php endforeach ?>
+    </tr>
+<?php } //endforeach ?>
+<?= tableClose ?>
+<?= formClose ?>
+
+<?= $pagebar ?>

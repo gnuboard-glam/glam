@@ -1,0 +1,23 @@
+<?= formOpen() ?>
+<?php if (Dot\isLocalServer()): ?>
+	<?= formSubmitOnly('검증') ?>
+<?php endif ?>
+
+<?=tableOpen([
+    '상품명',
+    'JPG',
+    'PNG',
+    '상세설명'
+])?>
+<?php foreach($products as $product){
+    $count = $product['cdn_count'];
+?>
+    <tr>
+        <th><?=$product['it_name']?></th>
+        <td><?=$count['jpg']?></td>
+        <td><?=$count['png']?></td>
+        <td><?=$count['detail']?></td>
+    </tr>
+<?php }// endforeach?>
+<?=tableClose?>
+<?= formClose ?>

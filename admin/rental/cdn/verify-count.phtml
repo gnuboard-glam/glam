@@ -1,0 +1,43 @@
+<?php
+function exists($verify)
+{
+	return $verify['exists'] ?
+		'' :
+		'class="not-exists"';
+}
+
+$types = ['jpg', 'png', 'detail'];
+?>
+<style>
+    .not-exists {
+        color: red;
+    }
+</style>
+<?= formOpen('./verify-action.php') ?>
+<?= formSubmitOnly('저장') ?>
+<?= tableOpen([
+	'상품명',
+	'JPG 폴더',
+	'JPG'  => 'number',
+	'PNG 폴더',
+	'PNG'  => 'number',
+	'상세설명 폴더',
+	'상세설명' => 'number'
+]) ?>
+
+<?php foreach ($products as $product) {
+    $id = $product['it_id'];
+	$verify = $product['cdn-verify'];
+	$count = $product['cdn-count'];
+	?>
+    <tr>
+
+        <th><?= $product['it_name'] ?></th>
+		<?php foreach ($types as $type): ?>
+            <td <?= exists($verify[$type]) ?>><?= $verify[$type]['dir'] ?></td>
+			<?= tdInput("{$type}[{$id}]", $count[$type] ?? 0) ?>
+		<?php endforeach ?>
+    </tr>
+<?php }//endforeach ?>
+<?= tableClose ?>
+<?= formClose ?>

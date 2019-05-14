@@ -1,0 +1,240 @@
+<style>
+    .row-depth0 [data-row-control=depth-out],
+    tr:first-child [data-row-control=order-up],
+    tr:last-child [data-row-control=order-down] {
+        display: none
+    }
+
+    .row-depth1 th,
+    .row-depth1 td {
+        background-color: #eee;
+    }
+
+    .row-depth2 th,
+    .row-depth2 td {
+        background-color: #ddd;
+    }
+
+    .row-depth3 th,
+    .row-depth3 td {
+        background-color: #ccc;
+    }
+
+    .row-depth4 th,
+    .row-depth4 td {
+        background-color: #bbb;
+    }
+
+    .tbl_frm01 .cell-control-depth,
+    .tbl_frm01 .cell-control-order {
+        width: 80px;
+    }
+
+    .tbl_frm01 .cell-classes,
+    .tbl_frm01 .cell-icons {
+        width: 100px;
+    }
+
+    .tbl_frm01 .cell-uses {
+        width: 50px
+    }
+</style>
+<?= formOpen() ?>
+<?= tableOpen([
+    '메뉴명',
+    '주소',
+    '클래스' => 'classes',
+    '아이콘' => 'icons',
+    '사용' => 'checkbox',
+    '깊이' => 'control-depth',
+    '순서' => 'control-order',
+    '관리' => 'control'
+]) ?>
+<?php foreach ($navs as $nav) {
+    $id = $nav['id'];
+    $depth = $nav['depth'];
+    ?>
+    <tr class="row-depth<?= $depth ?>" data-row-control>
+        <th class="cell-name">
+            <input type="hidden" name="updates[]" value="<?= $id ?>" data-row-control="update">
+            <input type="hidden" name="depths[<?= $id ?>]" value="<?= $depth ?>" data-row-control="depth" cols="2">
+
+            <div style="padding-left:<?= $depth * 40 ?>px" data-row-control="depth-space">
+                <?= input('name[' . $id . ']', $nav['name'], CONTROL_REQUIRED) ?>
+            </div>
+        </th>
+
+        <?= tdInput('links[' . $id . ']', $nav['link'], CONTROL_REQUIRED) ?>
+        <?= tdInput('classes[' . $id . ']', $nav['class']) ?>
+        <?= tdInput('icons[' . $id . ']', $nav['icons']) ?>
+
+        <td>
+            <input type="checkbox" name="use[<?= $id ?>]" <?= checked($nav['use']) ?>>
+        </td>
+
+        <td class="cell-control cell-control-depth">
+            <button type="button" data-row-control="depth-out">내기</button>
+            <button type="button" data-row-control="depth-in">들이기</button>
+        </td>
+
+        <td class="cell-control cell-control-order">
+            <button type="button" data-row-control="order-up">위로</button>
+            <button type="button" data-row-control="order-down">아래로</button>
+        </td>
+
+        <td class="cell-control">
+            <button type="button" data-row-control="add-top">위에 추가</button>
+            <button type="button" data-row-control="add-bottom">아래 추가</button>
+            <button type="button">삭제</button>
+        </td>
+    </tr>
+<?php } //endforeach ?>
+<?= tableClose ?>
+<?= formSubmitOnly() ?>
+<?= formClose ?>
+
+<script>
+	/**
+	 * pure table row controller
+	 * @author protyliss
+	 */
+	(function (window, document) {
+		var body = document.body;
+
+		var controls = {
+			'depth-in': function (store) {
+				controlDepth(store, +1);
+			},
+			'depth-out': function (store) {
+				controlDepth(store, -1);
+			},
+			'order-up': function (store) {
+				controlOrder(store, -1);
+			},
+			'order-down': function (store) {
+				controlOrder(store, +1);
+			},
+			'add-top': function (store) {
+				console.log(store);
+			},
+			'add-bottom': function (store) {
+				console.log(store);
+			}
+		};
+
+		Array.from(document.querySelectorAll('input[data-row-control=update]'))
+			.forEach(function (input) {
+				input.disabled = true;
+			});
+
+		// delegate events
+
+		body.addEventListener('change', function (event) {
+			var target = event.target;
+			var tagName = target.tagName;
+			if (target._rowControl === false || (tagName !== 'INPUT' || tagName !== 'SELECT' || tagName !== 'TEXTAREA')) {
+				target._rowControl = false;
+				return true;
+			}
+			var tr = getRow(target);
+			console.log(tr.getAttribute('data-row-control'));
+		});
+
+		body.addEventListener('click', function (event) {
+			var target = event.target;
+			if (target._rowControl === false || target.tagName !== 'BUTTON') {
+				target._rowControl = false;
+				return true;
+			}
+			var type = target.getAttribute('data-row-control');
+			if (type === '') {
+				target._rowControl = false;
+				return true;
+			}
+
+			if (!target['_rowControl']) {
+				var row = getRow(target);
+				target._rowControl = {
+					method: controls[type],
+					row: row,
+				};
+			}
+
+			var store = target._rowControl;
+			store.method.call(target, store);
+		});
+
+		function controlDepth(store, increase) {
+			var row = store.row;
+			var input = store.inputDepth || (store.inputDepth = getInput(row, 'depth'));
+
+
+			var value = Number(input.value);
+			var changedValue = value + increase;
+			if (changedValue > -1) {
+				input.value = changedValue;
+
+				row.className = row.className.replace(/(row-depth)\d/, '$1' + changedValue);
+
+				var space = store.depthSpace || (store.depthSpace = get(row, 'depth-space'));
+				if (space) {
+					space.style.paddingLeft = changedValue * 40 + 'px';
+				}
+			}
+
+			setUpdate(row);
+		}
+
+		function controlOrder(store, increase) {
+			var row = store.row;
+
+			var index = row.sectionRowIndex;
+			var table = row.parentNode;
+			var rows = table.rows;
+
+
+			if (increase < 0 && index) {
+				var before = rows[index - 1];
+				if (before) {
+					table.insertBefore(row, before);
+					setUpdate(row);
+					setUpdate(before);
+				}
+			} else {
+				var after = rows[index + 1];
+				if (after) {
+					table.insertBefore(row, after.nextSibling);
+					setUpdate(row);
+					setUpdate(after);
+				}
+			}
+		}
+
+		function setUpdate(row) {
+			if (!row['_rowControl']) {
+				var updateInput = getInput(row, 'update');
+				updateInput.disabled = true;
+				row._rowControl = {
+					updateInput: updateInput
+				}
+			}
+
+			row._rowControl.updateInput.disabled = false;
+		}
+
+		function getRow(button) {
+			// todo: polyfill?
+			return button.closest('tr');
+		}
+
+		function get(row, name) {
+			return row.querySelector('[data-row-control=' + name + ']');
+		}
+
+		function getInput(row, name) {
+			return row.querySelector('input[data-row-control=' + name + ']');
+		}
+	})(window, document);
+
+
+</script>

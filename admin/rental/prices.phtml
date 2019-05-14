@@ -1,0 +1,90 @@
+<?php
+$typeRequired = ['required' => 'true'];
+$typeNumber = ['type' => 'number'];
+$typePrice = ['type' => 'number', 'min' => 0];
+?>
+
+<?= formOpen('./prices-action.php') ?>
+<?= formSubmitOnly() ?>
+
+<div class="tbl_head01 tbl_wrap">
+    <div class="rental-prices">
+		<?php foreach ($products as $product) {
+			$id = $product['it_id'];
+			$options = $product['options'];
+			?>
+            <div class="rental-price">
+                <div class="rental-price-product">
+                    <img src="<?= $product['cdn_images']['png'][0] ?>">
+                </div>
+
+                <table class="rental-price-share">
+                    <thead>
+                    <tr>
+                        <th class="cell-checkbox">수정</th>
+                        <th>모델명</th>
+                        <th class="cell-price">판매가</th>
+                        <th class="cell-price">등록비</th>
+                        <th class="cell-price">설치비</th>
+                        <th class="cell-month">점검주기</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><input type="checkbox" name="update[]" value="<?= $id ?>"></td>
+                        <td><?= $product['it_model'] ?></td>
+						<?= tdInput("purchase[{$id}]", $product['purchase'], $typePrice) ?>
+						<?= tdInput("regist[{$id}]", $product['regist'], $typePrice) ?>
+						<?= tdInput("install[{$id}]", $product['install'], $typePrice) ?>
+						<?= tdInput("check-cycle[{$id}]", $product['checkCycle'], $typeNumber) ?>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <table class="rental-price3">
+                    <thead>
+                    <tr>
+                        <th>약정 개월</th>
+                        <th class="cell-checkbox">셀프</th>
+                        <th class="cell-price">1년</th>
+                        <th class="cell-price">2년</th>
+                        <th class="cell-price">3년</th>
+                        <th class="cell-price">4년</th>
+                        <th class="cell-price">5년</th>
+                        <th class="cell-number">소유권 전환</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+					<?php for ($i = 0; $i < 3; $i++) {
+						$option = $options[$i];
+						?>
+                        <tr>
+							<?= tdNumber("term[{$id}][]", $option['term'] ?? '') ?>
+                            <td class="cell-checkbox">
+                                <input type="checkbox"
+                                       name="self[<?= $id ?>][<?= $i ?>]" <?= $option['self'] ? 'checked' : '' ?>>
+                            </td>
+							<?= tdNumber("year1[{$id}][]", $option['year1'] ?? '') ?>
+							<?= tdNumber("year2[{$id}][]", $option['year2'] ?? '') ?>
+							<?= tdNumber("year3[{$id}][]", $option['year3'] ?? '') ?>
+							<?= tdNumber("year4[{$id}][]", $option['year4'] ?? '') ?>
+							<?= tdNumber("year5[{$id}][]", $option['year5'] ?? '') ?>
+							<?= tdInput("trans[{$id}][]", $option['trans'] ?? '') ?>
+                        </tr>
+					<?php }//endfor ?>
+                    </tbody>
+                </table>
+            </div>
+		<?php }//endforeach ?>
+    </div>
+    <?=$pagebar?>
+</div>
+<?= formClose() ?>
+
+<div class="description">
+    <p>
+        1년 입력 후 2-3년을 비우면, 2-3년의 가격은 1년이 됩니다.(1, 0, 0, 0, 0 = 1, 1, 1, 0, 0)<br>
+        2년 입력 후 3년을 비우면 3년의 가격은 2년이 됩니다.(1, 2, 0, 0, 0 = 1, 2, 2, 0, 0)<br>
+        4년 입력후 1-3, 5년을 비우면 1-3년의 가격은 4년이 됩니다.(0, 0, 0, 4, 0 = 4, 4, 4, 4, 4)
+    </p>
+</div>

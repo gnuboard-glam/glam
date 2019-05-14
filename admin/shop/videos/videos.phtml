@@ -1,0 +1,28 @@
+<div class="videos">
+	<?= formOpen('./action.php') ?>
+	<?= formSubmitOnly() ?>
+
+	<?= tableOpen([
+		'상품 사진' => 'thumbnail',
+		'상품명'   => 'name',
+		'모델명'   => 'model',
+		'영상 주소' => 'video'
+	]) ?>
+
+	<?php foreach ($products as $product) {
+		$id = $product['it_id'];
+		?>
+        <tr>
+            <td>
+                <img src="<?= $product['cdn_images']['jpg'][0] ?>" width="50px">
+            </td>
+            <td><?= $product['it_name'] ?></td>
+            <td><?= $product['it_model'] ?></td>
+			<?= tdInput('video[' . $id . ']', $product['video']) ?>
+        </tr>
+	<?php }//endforeach?>
+
+    <?=tableClose?>
+
+    <?=formClose?>
+</div>

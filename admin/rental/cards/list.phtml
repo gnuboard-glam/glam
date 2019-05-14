@@ -1,0 +1,30 @@
+<?= formOpen('./post.php') ?>
+
+<?= tableOpen([
+	'카드 사진',
+	'카드명',
+	'구분 값',
+	'정렬',
+	'관리'
+]) ?>
+
+<?php forEach ($cards as $card): ?>
+    <tr>
+        <td></td>
+        <td><?= $card['name'] ?></td>
+		<?= tdInput('index[' . $card['id'] . ']', $card['id'], ['required' => true]) ?>
+		<?= tdInput('order[' . $card['id'] . ']', $card['order'], ['required' => true]) ?>
+        <td>
+            <a href="?id=<?= $card['id'] ?>">수정</a>
+            <a href="delete.php?id=<?= $card['id'] ?>" data-confirm>삭제</a>
+        </td>
+    </tr>
+<?php endforeach ?>
+
+<?= tableClose ?>
+
+<?= buttonsOpen ?>
+    <a href="?mode=form" class="btn btn_02">추가</a>
+    <?= buttonSubmit() ?>
+<?= buttonsClose ?>
+<?= formClose ?>

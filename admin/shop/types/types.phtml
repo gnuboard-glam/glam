@@ -1,0 +1,72 @@
+<?php
+/**
+ * @global $glam Glam\GlamRentalAdmin
+ */
+
+$typeLabels = [];
+foreach($glam->_shopTypeLabels as $label){
+    $typeLabels[$label] = 'checkbox_withLabel';
+}
+?>
+
+    <div class="types">
+		<?= formOpen('./action.php') ?>
+		<?= formSubmitOnly() ?>
+
+		<?= tableOpen(array_merge([
+			'상품 사진' => 'thumbnail',
+			'상품명'   => 'name',
+			'모델명'   => 'model',
+			'한줄 설명' => 'basic',
+			'순서'    => 'order',
+			'판매' => 'checkbox_withLabel',
+			'품절' => 'checkbox_withLabel',
+		], $typeLabels)) ?>
+		<?php foreach ($products as $product) {
+			$id = $product['it_id'];
+			?>
+            <tr>
+                <td>
+                    <img src="<?= $product['cdn_images']['jpg'][0] ?>" width="50px">
+                </td>
+                <th>
+                    <input type="hidden" name="id[]" value="<?= $id ?>">
+					<?= input('it_name[' . $id . ']', $product['it_name']) ?>
+                </th>
+
+                <td>
+					<?= input('it_model[' . $id . ']', $product['it_model']) ?>
+                </td>
+
+                <td>
+					<?= input('it_basic[' . $id . ']', $product['it_basic']) ?>
+                </td>
+
+				<?= tdNumber('order[' . $id . ']', $product['it_order'], ['required' => 'true']) ?>
+                <td class="cell-checkbox_withLabel">
+                    <label>
+                        <input type="checkbox" name="use[<?= $id ?>]" <?= checked($product['it_use']) ?>>
+                        판매
+                    </label>
+                </td>
+                <td class="cell-checkbox_withLabel">
+                    <label>
+                        <input type="checkbox" name="soldout[<?= $id ?>]" <?= checked($product['it_soldout']) ?>>
+                        품절
+                    </label>
+                </td>
+				<?php foreach ($glam->_shopTypeLabels as $type => $label): ?>
+                    <td class="cell-checkbox_withLabel">
+                        <label>
+                            <input type="checkbox"
+                                   name="type<?= $type ?>[<?= $id ?>]" <?= checked($product['it_type' . $type]) ?>>
+							<?= $label ?>
+                        </label>
+                    </td>
+				<?php endforeach ?>
+            </tr>
+		<?php } //endforeach ?>
+		<?= tableClose ?>
+		<?= formClose ?>
+    </div>
+<?= $pagebar ?>
