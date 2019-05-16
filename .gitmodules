@@ -1,0 +1,3 @@
+[submodule "cssdot"]
+	path = cssdot
+	url = git://github.com/lisslet/cssdot.git
