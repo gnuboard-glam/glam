@@ -1,4 +1,4 @@
 <?php
 
 // fix include path
-require __DIR__ . '/../common.php';
+require __DIR__ . '/../../common.php';

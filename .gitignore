@@ -15,7 +15,7 @@ shop/ep_all.txt
 # glam premium
 rental/
 admin/rental/
-share/rental
+share/rental/
 glam/GlamRental.php
 glam/GlamRentalAdmin.php
 glam/GlamRentalTrait.php

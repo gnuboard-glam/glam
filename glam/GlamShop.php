@@ -2,6 +2,8 @@
 
 namespace Glam;
 
+use Error;
+
 class GlamShop extends GlamBoard
 {
 	use GlamShopTrait;

@@ -35,6 +35,8 @@ trait GlamShopTrait
 	public $_shopTypes;
 	public $_shopTypeLabels;
 
+	public $_shopCategories;
+
 	function glam_shop()
 	{
 		$g5 = &$this->g5;
@@ -116,8 +118,8 @@ trait GlamShopTrait
 
 	function getShopCategories(array $options = [])
 	{
-		$_shopCategory = &$this->_shopCategory;
-		if (!$_shopCategory) {
+		$_shopCategories = &$this->_shopCategories;
+		if (!$_shopCategories) {
 			$records = $this->db->selected($this->_tableShopCategory, $this->_shopCategoryFields)
 				->result()
 				->all();
@@ -131,10 +133,10 @@ trait GlamShopTrait
 				$categories['byId'][$record['ca_id']] = $record;
 				$categories['bySlug'][$record['slug']] = $record;
 			}
-			$_shopCategory = $categories;
+			$_shopCategories = $categories;
 		}
 
-		return $_shopCategory;
+		return $_shopCategories;
 	}
 
 	function getShopCategory($id)
