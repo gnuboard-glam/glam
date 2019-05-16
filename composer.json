@@ -16,8 +16,8 @@
     },
     "repositories": [
         {
-            "type": "path",
-            "url": "../../../lisslet/phpdot"
+            "type": "git",
+            "url": "https://github.com/lisslet/phpdot"
         }
     ],
     "require": {
