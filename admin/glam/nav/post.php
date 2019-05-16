@@ -30,11 +30,45 @@ foreach ($updates as $id) {
 
     $name = implode('|||', [$name, $class, $icon]);
 
-    $db->updated($table, [
-        'me_name' => $name,
-        'me_link' => $link,
-        'me_use' => $use,
-    ]);
+    $db->updated(
+        $table,
+        [
+            'me_name' => $name,
+            'me_link' => $link,
+            'me_use' => $use,
+        ],
+        $id,
+        'me_id'
+    );
+}
+
+$counts = [];
+$lastDepth = 0;
+$order = 0;
+foreach ($depths as $id => $depth) {
+
+    if ($lastDepth > $depth) {
+        if ($lastDepth) {
+            $counts[$lastDepth] = 9;
+        }
+    } else if (!isset($counts[$depth])) {
+        $counts[$depth] = 9;
+    }
+
+    $counts[$depth] ++;
+    $code = implode('', array_slice($counts, 0, $depth + 1));
+
+    $lastDepth = $depth;
+
+    $db->updated(
+        $table,
+        [
+            'me_code' => $code,
+            'me_order' => $order++
+        ],
+        $id,
+        'me_id'
+    );
 }
 
 $glam->back();

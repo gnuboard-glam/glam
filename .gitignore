@@ -1,12 +1,21 @@
-/.idea
+# idea
+.idea/
 
 # php
-/vendor
+vendor/
 composer.lock
 
 # js
-/node_modules
+node_modules/
 package-lock.json
 
 # glam shop
 shop/ep_all.txt
+
+# glam premium
+rental/
+admin/rental/
+share/rental
+glam/GlamRental.php
+glam/GlamRentalAdmin.php
+glam/GlamRentalTrait.php

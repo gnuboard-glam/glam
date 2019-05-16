@@ -39,58 +39,72 @@
         width: 50px
     }
 </style>
+
+<?= descOpen ?>
+편집 후 <em>확인을 눌러 저장해야 정상</em> 반영 됩니다.
+<?= descClose ?>
+
 <?= formOpen() ?>
-<?= tableOpen([
-    '메뉴명',
-    '주소',
-    '클래스' => 'classes',
-    '아이콘' => 'icons',
-    '사용' => 'checkbox',
-    '깊이' => 'control-depth',
-    '순서' => 'control-order',
-    '관리' => 'control'
-]) ?>
-<?php foreach ($navs as $nav) {
-    $id = $nav['id'];
-    $depth = $nav['depth'];
-    ?>
-    <tr class="row-depth<?= $depth ?>" data-row-control>
-        <th class="cell-name">
-            <input type="hidden" name="updates[]" value="<?= $id ?>" data-row-control="update">
-            <input type="hidden" name="depths[<?= $id ?>]" value="<?= $depth ?>" data-row-control="depth" cols="2">
-
-            <div style="padding-left:<?= $depth * 40 ?>px" data-row-control="depth-space">
-                <?= input('name[' . $id . ']', $nav['name'], CONTROL_REQUIRED) ?>
-            </div>
-        </th>
-
-        <?= tdInput('links[' . $id . ']', $nav['link'], CONTROL_REQUIRED) ?>
-        <?= tdInput('classes[' . $id . ']', $nav['class']) ?>
-        <?= tdInput('icons[' . $id . ']', $nav['icons']) ?>
-
-        <td>
-            <input type="checkbox" name="use[<?= $id ?>]" <?= checked($nav['use']) ?>>
-        </td>
-
-        <td class="cell-control cell-control-depth">
-            <button type="button" data-row-control="depth-out">내기</button>
-            <button type="button" data-row-control="depth-in">들이기</button>
-        </td>
-
-        <td class="cell-control cell-control-order">
-            <button type="button" data-row-control="order-up">위로</button>
-            <button type="button" data-row-control="order-down">아래로</button>
-        </td>
-
-        <td class="cell-control">
-            <button type="button" data-row-control="add-top">위에 추가</button>
-            <button type="button" data-row-control="add-bottom">아래 추가</button>
-            <button type="button">삭제</button>
-        </td>
+<table>
+    <thead>
+    <tr>
+        <th class="cell-">메뉴명</th>
+        <th class="cell-">주소</th>
+        <th class="cell-classes">클래스</th>
+        <th class="cell-icons">아이콘</th>
+        <th class="cell-checkbox">사용</th>
+        <th class="cell-control-depth">깊이</th>
+        <th class="cell-control-order">순서</th>
+        <th class="cell-control">관리</th>
     </tr>
-<?php } //endforeach ?>
-<?= tableClose ?>
-<?= formSubmitOnly() ?>
+    </thead>
+    <tbody data-row-section>
+    <?php foreach ($navs as $nav) {
+        $id = $nav['id'];
+        $depth = $nav['depth'];
+        ?>
+        <tr class="row-depth<?= $depth ?>" data-row-control>
+            <th class="cell-name">
+                <input type="hidden" name="updates[]" value="<?= $id ?>" data-row-control="update">
+                <input type="hidden" name="depths[<?= $id ?>]" value="<?= $depth ?>" data-row-control="depth" cols="2">
+
+                <div style="padding-left:<?= $depth * 40 ?>px" data-row-control="depth-space">
+                    <?= input('names[' . $id . ']', $nav['name'], CONTROL_REQUIRED) ?>
+                </div>
+            </th>
+
+            <?= tdInput('links[' . $id . ']', $nav['link'], CONTROL_REQUIRED) ?>
+            <?= tdInput('classes[' . $id . ']', $nav['class']) ?>
+            <?= tdInput('icons[' . $id . ']', $nav['icons']) ?>
+
+            <td>
+                <input type="checkbox" name="uses[<?= $id ?>]" <?= checked($nav['use']) ?>>
+            </td>
+
+            <td class="cell-control cell-control-depth">
+                <button type="button" data-row-control="depth-out">내기</button>
+                <button type="button" data-row-control="depth-in">들이기</button>
+            </td>
+
+            <td class="cell-control cell-control-order">
+                <button type="button" data-row-control="order-up">위로</button>
+                <button type="button" data-row-control="order-down">아래로</button>
+            </td>
+
+            <td class="cell-control">
+                <button type="button" data-row-control="add-top">위에 추가</button>
+                <button type="button" data-row-control="add-bottom">아래 추가</button>
+                <button type="button" data-row-control="remove">삭제</button>
+            </td>
+        </tr>
+    <?php } //endforeach ?>
+    </tbody>
+</table>
+
+<?= buttonsOpen ?>
+<button type="button" class="btn btn_02" data-row-control="add">최상위 메뉴 추가</button>
+<?= buttonSubmit() ?>
+<?= buttonsClose ?>
 <?= formClose ?>
 
 <script>
@@ -114,11 +128,40 @@
 			'order-down': function (store) {
 				controlOrder(store, +1);
 			},
+			'add': function (store) {
+				var section = store.section || (store.section = document.body.querySelector('[data-row-section]'));
+
+
+			},
 			'add-top': function (store) {
 				console.log(store);
 			},
 			'add-bottom': function (store) {
 				console.log(store);
+			},
+			'remove': function (store) {
+				if (confirm('정말 삭제할까요?')) {
+					var row = store.row;
+					var rows = row.parentNode.rows;
+					var rowIndex = row.sectionRowIndex;
+					var inputDepth = getInputDepth(store);
+					var depth = Number(inputDepth.value);
+					setUpdate(row);
+
+					row.style.display = 'none';
+
+					while (rows[++rowIndex]) {
+						row = rows[rowIndex];
+						console.log(row);
+						store = getRowStore(row);
+						inputDepth = getInputDepth(store);
+						if (depth < Number(inputDepth.value)) {
+							controlDepth(store, -1);
+						} else {
+							break;
+						}
+					}
+				}
 			}
 		};
 
@@ -132,23 +175,28 @@
 		body.addEventListener('change', function (event) {
 			var target = event.target;
 			var tagName = target.tagName;
-			if (target._rowControl === false || (tagName !== 'INPUT' || tagName !== 'SELECT' || tagName !== 'TEXTAREA')) {
-				target._rowControl = false;
+			if (target._rowControlChange === false || (tagName !== 'INPUT' && tagName !== 'SELECT' && tagName !== 'TEXTAREA')) {
+				target._rowControlChange = false;
 				return true;
 			}
-			var tr = getRow(target);
-			console.log(tr.getAttribute('data-row-control'));
+
+			var row = getRow(target);
+			if (!row.getAttribute('data-row-control') === null) {
+				target._rowControlChange = false;
+			}
+
+			setUpdate(row);
 		});
 
 		body.addEventListener('click', function (event) {
 			var target = event.target;
-			if (target._rowControl === false || target.tagName !== 'BUTTON') {
-				target._rowControl = false;
+			if (target._rowControlButton === false || target.tagName !== 'BUTTON') {
+				target._rowControlButton = false;
 				return true;
 			}
 			var type = target.getAttribute('data-row-control');
 			if (type === '') {
-				target._rowControl = false;
+				target._rowControlButton = false;
 				return true;
 			}
 
@@ -164,9 +212,14 @@
 			store.method.call(target, store);
 		});
 
+
+		function getInputDepth(store) {
+			return store.inputDepth || (store.inputDepth = getInput(store.row, 'depth'));
+		}
+
 		function controlDepth(store, increase) {
 			var row = store.row;
-			var input = store.inputDepth || (store.inputDepth = getInput(row, 'depth'));
+			var input = getInputDepth(store);
 
 
 			var value = Number(input.value);
@@ -210,16 +263,20 @@
 			}
 		}
 
-		function setUpdate(row) {
+		function getRowStore(row) {
 			if (!row['_rowControl']) {
 				var updateInput = getInput(row, 'update');
 				updateInput.disabled = true;
 				row._rowControl = {
+					row: row,
 					updateInput: updateInput
 				}
 			}
+			return row._rowControl;
+		}
 
-			row._rowControl.updateInput.disabled = false;
+		function setUpdate(row) {
+			getRowStore(row).updateInput.disabled = false;
 		}
 
 		function getRow(button) {

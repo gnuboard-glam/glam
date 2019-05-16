@@ -13,13 +13,17 @@ function byId(id) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+	if(location.href.indexOf('glam/admin')){
+		document.body.className += '_glam';
+	}
 	// set title
 	byId('logo').innerHTML = byId('hd').firstElementChild.innerText;
+
 	// set license
 	const year             = (new Date).getFullYear();
 	byId('ft').appendChild(
 		tag('p', {
-			innerHTML: `Includes 2016~${year} <b>GLAM</b>`
+			innerHTML: `Includes 2016~${year} <b>GLAM</b> presented by <em>liss.work</em>`
 		})
 	)
 });

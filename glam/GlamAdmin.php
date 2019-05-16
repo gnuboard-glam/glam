@@ -278,7 +278,7 @@ class GlamAdmin extends GlamBase
     {
         $table = $this->_tableNav;
         $records = $this->db->select($table)
-            ->order('me_code')
+            ->order('me_order')
             ->result()
             ->map([$this, '_setNav']);
 
