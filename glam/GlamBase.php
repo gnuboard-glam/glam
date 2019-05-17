@@ -104,7 +104,6 @@ abstract class GlamBase
 		define('GNU_THEME_URL', GNU_URL . $theme . '/');
 		define('GNU_THEME_CSS', GNU_THEME_URL . 'css/');
 		define('GNU_THEME_JS', GNU_THEME_URL . 'js/');
-		define('GNU_SET', GNU_THEME . 'set/');
 		define('GNU_CONTENTS', GNU_THEME . 'contents/');
 		define('GNU_TEMPLATES', GNU_THEME . 'templates/');
 		define('GNU_SHOP', GNU_THEME . 'shop/');

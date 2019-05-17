@@ -16,6 +16,6 @@ require $autoloadFile;
 if (isLocalServer()) {
 	Dev::mode([
 		'errorReport' => E_ALL & ~E_NOTICE,
-		'exclude'     => 'ajax.token.php'
+		'excludes'     => ['ajax.token.php', 'theme_update.php']
 	]);
 }

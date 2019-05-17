@@ -7,12 +7,13 @@ const $sass = () => sass().on('error', sass.logError);
 const sassFiles = '**/*.scss';
 
 const glamSrc = './glam/';
-const themeSrc = '../../theme/basic/';
+const themeSrc = '../../theme/';
 const glamCssSrc = glamSrc + 'css/';
-const themeCssSrc = themeSrc + 'css/';
 
 const glamSassFiles = glamCssSrc + sassFiles;
-const themeSassFiles = themeCssSrc + sassFiles;
+const themeSassFiles = themeSrc + sassFiles;
+
+console.log(themeSassFiles);
 
 gulp.task('glam-sass', done => {
 	pump(
@@ -27,7 +28,7 @@ gulp.task('theme-sass', done => {
 	pump(
 		gulp.src(themeSassFiles),
 		$sass(),
-		gulp.dest(themeCssSrc),
+		gulp.dest(themeSrc),
 		done
 	);
 });
