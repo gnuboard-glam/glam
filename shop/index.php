@@ -10,6 +10,8 @@ use Dot\Html\Pagebar;
 
 require '../common.php';
 
+$glam->isShop = true;
+
 $url = $_GET['url'] ?? '';
 $url = \rtrim($url, '/');
 $slugs = \explode('/', $url);
@@ -48,6 +50,7 @@ if ($slugs) {
 		$id = \end($slugs);
 		if (\is_numeric($id)) {
 			$product = $glam->getShopProduct($id);
+			$glam->_shopProduct = $product['it_id'];
 		}
 
 		$category = $glam->getShopCategory($slugs[0]);
@@ -58,6 +61,8 @@ if ($slugs) {
 	}
 }
 if ($product) {
+	$glam->_shopProduct = &$product;
+
 	require GNU_THEME . 'shop/detail.phtml';
 	if ($fallback) {
 		require $fallback;

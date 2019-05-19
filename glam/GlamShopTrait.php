@@ -193,6 +193,7 @@ trait GlamShopTrait
 			'field'        => null,
 			'group'        => null,
 			'order'        => 'it_order desc, it_id',
+			'random'       => null,
 			'limit'        => null,
 			'page'         => null,
 			'cacheName'    => null,
@@ -219,6 +220,7 @@ trait GlamShopTrait
 		$where = $options['where'];
 		$group = $options['group'];
 		$order = $options['order'];
+		$random = $options['random'];
 
 		/*
 		if($cacheName === true){
@@ -327,7 +329,9 @@ trait GlamShopTrait
 			$sql->limit($limit);
 		}
 
-		if ($order) {
+		if ($random) {
+			$sql->order('rand()');
+		} elseif ($order) {
 			$sql->order($order);
 		}
 
