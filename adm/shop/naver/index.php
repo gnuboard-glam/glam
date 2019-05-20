@@ -55,7 +55,6 @@ $fileUrl = \GLAM_URL . 'shop/ep_all.txt';
 <?= tableClose ?>
 
 <?= buttonsOpen ?>
-<?= buttonLink('update.php', '파일 갱신') ?>
 <?= buttonSubmit() ?>
 <?= buttonsClose ?>
 <?= formClose ?>

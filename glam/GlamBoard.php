@@ -182,12 +182,13 @@ class GlamBoard extends GlamBase
 
     function _getNavs()
     {
-        $navs = $this->getNavs();
+        // $navs = $this->getNavs();
 
         $flat = [];
         $nested = [];
         $parents = [];
 
+        $navs = [];
         foreach ($navs as $nav) {
             $id = $nav['id'];
             $depth = $nav['depth'];

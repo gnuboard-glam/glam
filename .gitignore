@@ -9,6 +9,9 @@ composer.lock
 node_modules/
 package-lock.json
 
+# css
+*.css
+
 # glam shop
 shop/ep_all.txt
 

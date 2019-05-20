@@ -97,7 +97,7 @@ abstract class GlamBase
         define('GLAM_THEME', GLAM . 'theme/');
         define('GLAM_SKIN', GLAM . 'skin/');
         define('GLAM_ADMIN', GLAM . 'admin/');
-        define('GLAM_ADMIN_URL', GLAM_URL . 'admin/');
+        define('GLAM_ADMIN_URL', GLAM_URL . 'adm/');
         define('GLAM_SHARE', GLAM . 'share/');
         define('GLAM_SHARE_THEME', GLAM_SHARE . 'theme/');
         define('GLAM_SHARE_URL', GNU_URL, 'glam/share');
@@ -206,7 +206,7 @@ abstract class GlamBase
             $defaults;
     }
 
-    function getNavs(array $options = [])
+    function getNavs2(array $options = [])
     {
         $options += [
             'all' => false,

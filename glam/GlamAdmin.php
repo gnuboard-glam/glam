@@ -92,12 +92,12 @@ class GlamAdmin extends GlamBase
 
         $group = $this->getNavGroup($group);
 
-        $className = \strtolower(\ pathinfo($fileName, PATHINFO_FILENAME));
-        $className = \str_replace('/', '-', $className);
+        $className = strtolower(pathinfo($fileName, PATHINFO_FILENAME));
+        $className = str_replace('/', '-', $className);
 
 
-        if ($fileName !== '#' && \strpos($fileName, \GLAM_ADMIN_URL) !== 0) {
-            $fileName = \GLAM_ADMIN_URL . \ltrim($fileName, '/');
+        if ($fileName !== '#' && strpos($fileName, \GLAM_ADMIN_URL) !== 0) {
+            $fileName = GLAM_ADMIN_URL . ltrim($fileName, '/');
         }
 
         $index = 'menu' . $group;

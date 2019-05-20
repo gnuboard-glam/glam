@@ -6,7 +6,7 @@ const $sass = () => sass().on('error', sass.logError);
 
 const sassFiles = '**/*.scss';
 
-const glamSrc = './glam/';
+const glamSrc = './';
 const themeSrc = '../../theme/';
 const glamCssSrc = glamSrc + 'css/';
 

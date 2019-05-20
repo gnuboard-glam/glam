@@ -13,11 +13,16 @@ $purchase = $_POST['purchase'] ?? '';
 
 
 $glam->setOption('naverShopping', [
-	'rentalPrefix' => $rentalPrefix,
-	'rental' => $rental,
+	'rentalPrefix'     => $rentalPrefix,
+	'rental'           => $rental,
 	'rentalCategories' => $rentalCategories,
-	'purchasePrefix' => $purchasePrefix,
-	'purchase' => $purchase
+	'purchasePrefix'   => $purchasePrefix,
+	'purchase'         => $purchase
 ]);
+
+$file = '../../../shop/ep_all.txt';
+if (file_exists($file)) {
+	unlink($file);
+}
 
 $glam->back();

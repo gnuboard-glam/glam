@@ -33,16 +33,6 @@ class NaverShopProducts
 
 	protected $products = [];
 
-	/**
-	 * filename as output
-	 * @var string
-	 */
-	protected $fileName;
-
-	function __construct(string $fileName)
-	{
-		$this->fileName = $fileName;
-	}
 
 	function add(array $product)
 	{
@@ -51,7 +41,7 @@ class NaverShopProducts
 		return $this;
 	}
 
-	function render()
+	function getEntries(): string
 	{
 		$entries = [];
 
@@ -75,7 +65,12 @@ class NaverShopProducts
 
 		$entries = \iconv('utf-8', 'euc-kr', $entries);
 
-		File::write($this->fileName, $entries);
+		return $entries;
+	}
+
+	function createFile($fileName)
+	{
+		File::write($fileName, $this->getEntries());
 	}
 }
 

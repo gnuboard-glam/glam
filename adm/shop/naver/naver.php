@@ -62,7 +62,7 @@ class NaverShopProducts
 				$value = [];
 				$value[] = '<<<' . $key . '>>>';
 				$value[] = $product[$key] ?? $value;
-				$value = \implode('', $value);
+				$value = implode('', $value);
 				$values[] = $value;
 			}
 
@@ -75,10 +75,3 @@ class NaverShopProducts
 		File::write($this->fileName, $values);
 	}
 }
-
-// $protocol = $_SERVER['REQUEST_SCHEME'] ?: 'http';
-// $host = $protocol . '://' . $_SERVER['HTTP_POST'] . '/';
-
-$ns = new NaverShopProducts(\GLAM . 'shop/ep_all.txt');
-
-
