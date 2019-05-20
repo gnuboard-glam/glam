@@ -13,7 +13,6 @@ $head->style(GLAM_CSSDOT . 'box.css');
 $head->style(GLAM_CSSDOT . 'lift.css');
 $head->style('https://fonts.googleapis.com/css?family=Noto+Sans+KR');
 
-$head->style(GLAM_CSS . 'shop.css');
 $head->style(GNU_THEME_CSS . 'global.css');
 
 if (!isset($g5['title'])) {

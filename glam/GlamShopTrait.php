@@ -39,7 +39,10 @@ trait GlamShopTrait
 
 	function glam_shop()
 	{
-		$g5 = &$this->g5;
+        define('GNU_SHOP', GNU_THEME . 'shop/');
+        define('GNU_SHOP_URL', GNU_URL . 'shop/');
+
+        $g5 = &$this->g5;
 		$this->_tableShopDefault = $g5['g5_shop_default_table'];
 
 		$this->_shopExtendFields = [

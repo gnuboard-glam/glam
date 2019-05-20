@@ -273,43 +273,4 @@ class GlamAdmin extends GlamBase
 
         return $values;
     }
-
-    function getNavs()
-    {
-        $table = $this->_tableNav;
-        $records = $this->db->select($table)
-            ->order('me_order')
-            ->result()
-            ->map([$this, '_setNav']);
-
-        return $records;
-    }
-
-    function _setNav($record)
-    {
-        $code = $record['me_code'];
-        $depth = strlen($code) / 2 - 1;
-
-        $values = $record['me_name'];
-        $values = explode('|||', $values);
-        $name = $values[0];
-        $class = $values[1] ?? '';
-        $icon = $values[2] ?? '';
-
-        $nav = [
-            'id' => $record['me_id'],
-            'code' => $code,
-            'depth' => $depth,
-            'name' => $name,
-            'class' => $class,
-            'icon' => $icon,
-            'link' => $record['me_link'],
-            'target' => $record['me_target'],
-            'order' => $record['me_order'],
-            'use' => $record['me_use'],
-            'use2' => $record['me_mobile_use']
-        ];
-
-        return $nav;
-    }
 }
