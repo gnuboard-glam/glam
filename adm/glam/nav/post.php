@@ -15,6 +15,7 @@ $icons = $_POST['icons'] ?? [];
 $uses = $_POST['uses'] ?? [];
 
 $links = $_POST['links'] ?? [];
+$targets = $_POST['targets'] ?? [];
 
 $db =& $glam->db;
 $table =& $glam->_tableNav;
@@ -27,6 +28,7 @@ foreach ($updates as $id) {
     $use = $uses[$id] ? 1 : 0;
 
     $link = $links[$id] ?? '#';
+    $target = $targets[$id] ?? 'self';
 
     $name = implode('|||', [$name, $class, $icon]);
 
@@ -36,6 +38,7 @@ foreach ($updates as $id) {
             'me_name' => $name,
             'me_link' => $link,
             'me_use' => $use,
+            'me_target' => $target
         ],
         $id,
         'me_id'

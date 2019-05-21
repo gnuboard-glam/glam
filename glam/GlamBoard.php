@@ -87,7 +87,68 @@ class GlamBoard extends GlamBase
         $this->content = $content;
         $this->isIndex = $content === 'index';
 
-        $this->_getNavs();
+
+        $cache =& $this->cache;
+
+        // nav
+        $cachedNav = $cache->get('navs');
+        if ($cachedNav) {
+            $this->navs = $cachedNav;
+        } else {
+
+            $navs = $this->getNavs();
+            $flat = [];
+            $nested = [];
+            $parents = [];
+
+            foreach ($navs as $nav) {
+                $id = $nav['id'];
+                $depth = $nav['depth'];
+
+                $link = $nav['link'];
+                $nav['link'] = $link;
+                $nav['parentLink'] = '/';
+                $nav['children'] = [];
+
+                $flat[$id] = $nav;
+
+                $target = &$flat[$id];
+
+                $parents[$depth] = &$target; // &$flat[$id];
+
+                if ($depth) {
+                    $parent = &$parents[$depth - 1];
+
+                    $_notSlug = '/^[\/#\?]/';
+                    if (!preg_match($_notSlug, $target['link'])) {
+                        if (!preg_match($_notSlug, $parent['link'])) {
+                            $target['link'] = $parent['link'] . '/' . $link;
+                        } else {
+                            $target['link'] = $parent['parentLink'] . '/' . $link;
+                        }
+                    } else {
+                        $target['parentLink'] = $parent['link'];
+                    }
+
+                    $parent['children'][] = &$target;
+                } else {
+                    $nested[$link] = &$target;
+                }
+            }
+
+            // fixed target
+            foreach ($flat as &$nav) {
+                if ($nav['target'] === 'child') {
+                    if (count($nav['children'])) {
+                        $nav['link'] = $nav['children'][0]['link'];
+                    }
+                    $nav['target'] = 'self';
+                }
+            }
+
+            $cache->set('navs', $nested);
+            $this->navs = $nested;
+        }
     }
 
     function locale()
@@ -157,69 +218,8 @@ class GlamBoard extends GlamBase
         $this->_bodyClass .= ' ' . $className;
     }
 
-    function getNavs(array $options){
-        $options += [
-            'all' => false,
-            'cache' => true,
-        ];
-
-        $all = &$options['all'];
-        $cache = &$options['cache'];
-
-        if($all){
-            $cache = false;
-        }
-
-        return $all ?
-            parent::getNavs($options) :
-            $this->_getNavCache($options);
-    }
-
-    function _getNavCache(array $options){
-        $cached = $this->cache->get('navs');
-        return $cached ?: $this->_getNavAll($options);
-    }
-
-    function _getNavs()
-    {
-        // $navs = $this->getNavs();
-
-        $flat = [];
-        $nested = [];
-        $parents = [];
-
-        $navs = [];
-        foreach ($navs as $nav) {
-            $id = $nav['id'];
-            $depth = $nav['depth'];
-
-            $link = $nav['link'];
-            $link = ltrim($link, '/');
-            $nav['link'] = $link;
-
-            $nav['children'] = [];
-
-            $flat[$id] = $nav;
-            $parents[$depth] = &$flat[$id];
-
-            if ($depth) {
-                $parent = &$parents[$depth - 1];
-
-                $flat[$id]['link'] = $parent['link'] . '/' . $link;
-
-                $parent['children'][] = &$flat[$id];
-            } else {
-                $nested[$link] = &$flat[$id];
-            }
-        }
-
-        $this->navs = $nested;
-        return $this->navs;
-    }
-
     function nav($root = null)
     {
-
         $navs = $root ?
             $root['children'] :
             $this->navs;
@@ -229,7 +229,7 @@ class GlamBoard extends GlamBase
         foreach ($navs as $nav) {
             $id = $nav['id'];
             $href = GNU_URL . $nav['link'];
-            $html[] = '<li data-id="'.$id.'">';
+            $html[] = '<li data-id="' . $id . '">';
 
             $html[] = '<a href="' . $href . '">' . $nav['name'] . ' </a>';
             if ($nav['children']) {

@@ -206,11 +206,10 @@ abstract class GlamBase
             $defaults;
     }
 
-    function getNavs2(array $options = [])
+    function getNavs(array $options = [])
     {
         $options += [
-            'all' => false,
-            'cache' => true,
+            'all' => false
         ];
 
         $all = &$options['all'];

@@ -25,23 +25,27 @@
         background-color: #bbb;
     }
 
-    .tbl_frm01 .cell-control-depth,
-    .tbl_frm01 .cell-control-order {
-        width: 80px;
+    .tbl_wrap .cell-control-depth,
+    .tbl_wrap .cell-control-order {
+        width: 120px;
     }
 
-    .tbl_frm01 .cell-classes,
-    .tbl_frm01 .cell-icons {
+    .tbl_wrap .cell-classes,
+    .tbl_wrap .cell-icons {
         width: 100px;
     }
 
-    .tbl_frm01 .cell-uses {
+    .tbl_wrap .cell-uses {
         width: 50px
     }
 </style>
 
 <?= descOpen ?>
-편집 후 <em>확인을 눌러 저장해야 정상</em> 반영 됩니다.
+    <ul>
+        <li>편집 후 <em>확인을 눌러 저장해야 정상</em> 반영 됩니다.</li>
+        <li>주소가 `/`, '#', '?'로 시작하지 않으면, 부모의 하위 주소가 됩니다.</li>
+        <li>방식이 `child`인 경우 첫번째 주식 메뉴의 주소를 링크 합니다.</li>
+    </ul>
 <?= descClose ?>
 
 <?= formOpen() ?>
@@ -49,9 +53,10 @@
     <thead>
     <tr>
         <th class="cell-">메뉴명</th>
-        <th class="cell-">주소</th>
         <th class="cell-classes">클래스</th>
         <th class="cell-icons">아이콘</th>
+        <th class="cell-address">주소</th>
+        <th class="cell-target">방식</th>
         <th class="cell-checkbox">사용</th>
         <th class="cell-control-depth">깊이</th>
         <th class="cell-control-order">순서</th>
@@ -72,11 +77,11 @@
                     <?= input('names[' . $id . ']', $nav['name'], CONTROL_REQUIRED) ?>
                 </div>
             </th>
-
-            <?= tdInput('links[' . $id . ']', $nav['link'], CONTROL_REQUIRED) ?>
             <?= tdInput('classes[' . $id . ']', $nav['class']) ?>
             <?= tdInput('icons[' . $id . ']', $nav['icons']) ?>
 
+            <?= tdInput('links[' . $id . ']', $nav['link'], CONTROL_REQUIRED) ?>
+            <?= tdInput('targets['.$id.']', $nav['target'])?>
             <td>
                 <input type="checkbox" name="uses[<?= $id ?>]" <?= checked($nav['use']) ?>>
             </td>
