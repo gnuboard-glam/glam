@@ -224,6 +224,32 @@ function variables(array $variables)
     return implode(PHP_EOL, $html);
 }
 
+const tdControl = <<<HTML
+	<td class="cell-control">
+        <button type="button" data-type="up">위로</button>
+        <button type="button" data-type="down">아래로</button>
+        <button type="button" data-type="remove">제거</button>
+        <button type="button" data-type="add">추가</button>		
+	</td>
+HTML;
+
+const framesetOpen = <<<HTML
+<div class="frameset">
+	<div class="frame">
+HTML;
+
+const frameDivider = <<<HTML
+	</div>
+	<div class="frame">
+HTML;
+
+const framesetClose = <<<HTML
+	</div>
+</div>
+HTML;
+
+
+
 const CONTROL_REQUIRED = ['required' => true];
 
 require __DIR__ . '../../../../adm/admin.head.php';

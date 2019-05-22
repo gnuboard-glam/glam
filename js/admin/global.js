@@ -13,14 +13,14 @@ function byId(id) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-	if(location.href.indexOf('glam/admin')){
+	if (location.href.indexOf('glam/admin')) {
 		document.body.className += '_glam';
 	}
 	// set title
 	byId('logo').innerHTML = byId('hd').firstElementChild.innerText;
 
 	// set license
-	const year             = (new Date).getFullYear();
+	const year = (new Date).getFullYear();
 	byId('ft').appendChild(
 		tag('p', {
 			innerHTML: `Includes 2016~${year} <b>GLAM</b> presented by <em>liss.work</em>`
@@ -28,25 +28,41 @@ document.addEventListener('DOMContentLoaded', () => {
 	)
 });
 
-// rental
-if (location.href.indexOf('glam/admin/rental/prices') > -1) {
-	console.log('ok');
-	window.addEventListener('DOMContentLoaded', () => {
-		Array.from(document.querySelectorAll('.rental-prices input')).forEach(input => {
 
-			if (input.name.indexOf('update[') < 0) {
-				input.addEventListener('change', enableUpdate);
-			} else {
-				input.closest('.rental-price')['_itemUpdate'] = input;
-			}
-		});
-	});
+(function (window, document) {
+	var flag      = 'data-input-updated-check';
+	var storeName = '_inputUpdateChecker';
 
-	function enableUpdate() {
-		const group = this['_itemGroup'] || (this['_itemGroup'] = this.closest('.rental-price'));
-		if (this.name.indexOf('update[') < 0) {
-			group.className += ' _updated';
-			group['_itemUpdate'].checked = true;
-		}
+	function rowUpdateCheck() {
+		Array.from(document.querySelectorAll('[' + flag + ']'))
+			.forEach(containerSet);
 	}
-}
+
+	function containerSet(container) {
+		var groupSelector = container.getAttribute(flag) || 'tr';
+
+		Array.from(container.querySelectorAll('input'))
+			.forEach(function (input) {
+				if (input.name.indexOf('update[') < 0) {
+					input.addEventListener('change', onChange);
+					input[storeName] = {
+						groupSelector: groupSelector
+					};
+				} else {
+					container[storeName] = input;
+				}
+			});
+	}
+
+	function onChange() {
+		var store      = this[storeName];
+		var group      = store['group'] ||
+						 (store['group'] = this.closest(store['groupSelector']));
+		var update     = group['update'] ||
+						 (group['update'] = group.querySelector('input[name^=update]'));
+		group.className += ' _updated';
+		update.checked = true;
+	}
+
+	window.addEventListener('DOMContentLoaded', rowUpdateCheck);
+})(window, document);
