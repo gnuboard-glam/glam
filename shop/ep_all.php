@@ -99,9 +99,6 @@ if($update || true) {
                     'category_name1' => $cate1,
                     'category_name2' => $product['category2']['ca_name'] ?? '',
                     'category_name3' => $product['category3']['ca_name'] ?? '',
-//					'caid1' => $caid1,
-//					'caid2' => $product['category2']['ca_id'] ?? '',
-//					'caid3' => $product['category3']['ca_id'] ?? '',
                     'model_number' => $product['it_model'],
 
                     // todo: change it with admin
