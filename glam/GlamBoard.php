@@ -87,8 +87,18 @@ class GlamBoard extends GlamBase
         $this->content = $content;
         $this->isIndex = $content === 'index';
 
-
         $cache =& $this->cache;
+
+        // styles
+        global $theme_config;
+        $styles = $theme_config['styles'] ?? null;
+        $styleIndex = $styles['index'] ?? true;
+
+        if ($this->isIndex) {
+            if ($styleIndex) {
+                $this->head->styles->url(10, GNU_THEME_CSS . 'index.css');
+            }
+        }
 
         // nav
         $cachedNav = $cache->get('navs');
