@@ -18,6 +18,12 @@ const DEFAULT_OPTIONS = [
 abstract class GlamBase
 {
     /**
+     * @var string
+     */
+    protected $_uri;
+
+    /**
+     * split uri by slash
      * @var array
      */
     protected $_slugs;
@@ -79,6 +85,7 @@ abstract class GlamBase
         $uri = rtrim($uri, '/');
         $slugs = explode('/', $uri);
 
+        $this->_uri = $uri;
         $this->_slugs = $slugs;
 
         global $config;
@@ -107,10 +114,10 @@ abstract class GlamBase
         define('GLAM_JSDOT', GLAM_URL . 'jsdot/');
         define('GNU_THEME', GNU . $theme . '/');
         define('GNU_THEME_URL', GNU_URL . $theme . '/');
+        define('GNU_TEMPLATES', GNU_THEME . 'templates/');
         define('GNU_THEME_CSS', GNU_THEME_URL . 'css/');
         define('GNU_THEME_JS', GNU_THEME_URL . 'js/');
         define('GNU_CONTENTS', GNU_THEME . 'contents/');
-        define('GNU_TEMPLATES', GNU_THEME . 'templates/');
 
         global $g5;
         $this->g5 =& $g5;

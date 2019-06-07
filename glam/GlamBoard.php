@@ -30,7 +30,7 @@ class GlamBoard extends GlamBase
      * filename of uri
      * @var string
      */
-    protected $content;
+    protected $script;
 
     /**
      * is page of index
@@ -38,22 +38,22 @@ class GlamBoard extends GlamBase
     public $isIndex;
 
     /**
+     * is page of content
+     * @var boolean
+     */
+    public $isContent;
+
+    /**
      * is page of board
      * @var boolean
      */
     public $isBoard;
+
     /**
      * is page of shop
      * @var boolean
      */
     public $isShop;
-
-
-    /**
-     * is page of content
-     * @var boolean
-     */
-    public $isContent;
 
 
     protected $_bodyClass = '';
@@ -72,6 +72,8 @@ class GlamBoard extends GlamBase
 
     public $navs;
 
+    public $activatedNav;
+
     function glam_ready()
     {
         parent::glam_ready();
@@ -82,30 +84,16 @@ class GlamBoard extends GlamBase
         $slugs = &$this->_slugs;
         $root = &$slugs[0];
 
-        $content = $script;
-
-        $this->content = $content;
-        $this->isIndex = $content === 'index';
+        $this->script = $script;
+        $this->isIndex = $script === 'index';
 
         $cache =& $this->cache;
 
-        // styles
-        global $theme_config;
-        $styles = $theme_config['styles'] ?? null;
-        $styleIndex = $styles['index'] ?? true;
-
-        if ($this->isIndex) {
-            if ($styleIndex) {
-                $this->head->styles->url(10, GNU_THEME_CSS . 'index.css');
-            }
-        }
-
         // nav
         $cachedNav = $cache->get('navs');
-        if ($cachedNav) {
+        if (false && $cachedNav) {
             $this->navs = $cachedNav;
         } else {
-
             $navs = $this->getNavs();
             $flat = [];
             $nested = [];
@@ -117,8 +105,10 @@ class GlamBoard extends GlamBase
 
                 $link = $nav['link'];
                 $nav['link'] = $link;
+                $nav['parent'] = null;
                 $nav['parentLink'] = '/';
                 $nav['children'] = [];
+                $nav['active'] = false;
 
                 $flat[$id] = $nav;
 
@@ -140,6 +130,7 @@ class GlamBoard extends GlamBase
                         $target['parentLink'] = $parent['link'];
                     }
 
+                    $target['parent'] = &$parent;
                     $parent['children'][] = &$target;
                 } else {
                     $nested[$link] = &$target;
@@ -159,6 +150,60 @@ class GlamBoard extends GlamBase
             $cache->set('navs', $nested);
             $this->navs = $nested;
         }
+        $this->setLocation();
+        $this->setNavActive();
+    }
+
+    protected function setNavActive($navs = null)
+    {
+        if (!$navs) {
+            $navs =& $this->navs;
+        }
+        $_uri = &$this->_uri;
+        $activatedNav = &$this->activatedNav;
+        foreach ($navs as &$nav) {
+            if ($nav['active']) {
+                continue;
+            }
+
+            if ($nav['link'] === $_uri) {
+                if (!$activatedNav || ($activatedNav['depth'] <= $nav['depth'])) {
+                    $activatedNav = $nav;
+                }
+
+                $nav['active'] = true;
+                $parent = &$nav['parent'];
+
+                while ($parent !== null) {
+                    $parent['active'] = true;
+                    $parent = &$parent['parent'];
+                }
+            }
+            if ($nav['children']) {
+                $this->setNavActive($nav['children']);
+            }
+        }
+    }
+
+    protected function setLocation(): bool
+    {
+        // styles
+        global $theme_config;
+        $styles = $theme_config['styles'] ?? null;
+        $styleIndex = $styles['index'] ?? true;
+
+        $script = &$this->script;
+        $isIndex = &$this->isIndex;
+        if ($isIndex) {
+            if ($styleIndex) {
+                $this->head->styles->url(10, GNU_THEME_CSS . 'index.css');
+            }
+            return true;
+        } else if ($script === 'router') {
+            $this->isContent = true;
+            return true;
+        }
+        return false;
     }
 
     function locale()
@@ -190,7 +235,8 @@ class GlamBoard extends GlamBase
 
             $this->_locales = $fixedLocales;
 
-            $slug = $this->_slugs[0] ?? null;
+            $_slugs = &$this->_slugs;
+            $slug = $_slugs[0] ?? null;
 
             $locale = $defaultLocale;
 
@@ -199,6 +245,7 @@ class GlamBoard extends GlamBase
                     $locale = $slug;
                     set_session('locale', $locale);
                 }
+                array_shift($_slugs);
             } elseif (isset($_SESSION['locale'])) {
                 $locale = &$_SESSION['locale'];
             }
@@ -211,16 +258,30 @@ class GlamBoard extends GlamBase
         return $this->locale;
     }
 
-    function bodyClass()
+    function getBodyClass(): array
+    {
+        if ($this->isIndex) {
+            return ['index'];
+        }
+
+        if ($this->isContent) {
+            $classes = [];
+            $_slugs = &$this->_slugs;
+            foreach ($_slugs as $key => $value) {
+                $classes[] = implode('-', array_slice($_slugs, 0, $key + 1));
+            }
+            return $classes;
+        }
+
+        return [];
+    }
+
+
+    function bodyClass(): string
     {
         $classList = $this->getBodyClass();
 
         return \trim($this->_bodyClass . ' page_' . \implode(' page_', $classList));
-    }
-
-    function getBodyClass()
-    {
-        return [$this->content];
     }
 
     function setBodyClass(string $className)
@@ -228,8 +289,12 @@ class GlamBoard extends GlamBase
         $this->_bodyClass .= ' ' . $className;
     }
 
-    function nav($root = null)
+    function navList($root = null, $options = [])
     {
+        $options += [
+            'children' => true
+        ];
+        $optionsChildren = &$options['children'];
         $navs = $root ?
             $root['children'] :
             $this->navs;
@@ -239,11 +304,23 @@ class GlamBoard extends GlamBase
         foreach ($navs as $nav) {
             $id = $nav['id'];
             $href = GNU_URL . $nav['link'];
-            $html[] = '<li data-id="' . $id . '">';
+            $name = $nav['name'];
 
-            $html[] = '<a href="' . $href . '">' . $nav['name'] . ' </a>';
-            if ($nav['children']) {
-                $html[] = $this->nav($nav);
+            $classList = [];
+
+            if ($nav['active']) {
+                $classList[] = 'dot-nav_active';
+                $name = '<b>' . $name . '</b>';
+            }
+
+            $classList = $classList ?
+                ' class="' . implode(' ', $classList) . '"' :
+                '';
+
+            $html[] = '<li data-id="' . $id . '"' . $classList . '>';
+            $html[] = '<a href="' . $href . '">' . $name . ' </a>';
+            if ($optionsChildren && $nav['children']) {
+                $html[] = $this->navList($nav);
             }
             $html[] = '</li>';
         }
@@ -252,4 +329,58 @@ class GlamBoard extends GlamBase
 
         return implode(PHP_EOL, $html);
     }
+
+    function activatedNavList()
+    {
+        return $this->navList($this->activatedNav['parent']);
+    }
+
+    function activeNav($depth = 1, string $index = null): array
+    {
+        if (!is_numeric($depth)) {
+            $index = $depth;
+            $depth = 1;
+        }
+
+        $nav = $this->activatedNav;
+        if ($nav) {
+            while ($nav['parent'] && $nav['depth'] > $depth) {
+                $nav = $nav['parent'];
+            }
+        }
+
+        return $nav;
+    }
+
+    function activeNavList(int $depth = 1, array $options = [])
+    {
+        return $this->navList($this->activeNav($depth - 1), $options);
+    }
+
+    function activeNavDepth($depth = 1)
+    {
+        $activatedNav = &$this->activatedNav;
+        if ($activatedNav) {
+            return $activatedNav['depth'] >= $depth;
+        }
+        return false;
+    }
+
+    function navCrumb()
+    {
+        $nav = $this->activatedNav;
+        if ($nav) {
+            $navs = [$nav];
+            while ($nav['parent']) {
+                $navs[] = $nav['parent'];
+                $nav = $nav['parent'];
+            }
+            $navs = array_reverse($navs);
+            return $this->navList(['children' => $navs], [
+                'children' => false
+            ]);
+        }
+        return '';
+    }
+
 }

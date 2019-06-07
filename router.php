@@ -15,8 +15,6 @@ $url = $_GET['url'] ?? '';
 $contentFile = GNU_CONTENTS . $url . '.phtml';
 
 if (stream_resolve_include_path($contentFile) !== false) {
-    $glam->isContent = true;
-
     // content stylesheet
     $styles = $theme_config['styles'] ?? null;
     if ($styles) {

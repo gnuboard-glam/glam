@@ -1,5 +1,5 @@
 <?php
-list($sub_menu, $title) = $glam->getLocation();
+list($sub_menu, $title) = $glam->getLocationResources();
 $g5['title'] = $title;
 
 
