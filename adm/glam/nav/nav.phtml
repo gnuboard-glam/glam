@@ -41,11 +41,11 @@
 </style>
 
 <?= descOpen ?>
-    <ul>
-        <li>편집 후 <em>확인을 눌러 저장해야 정상</em> 반영 됩니다.</li>
-        <li>주소가 `/`, '#', '?'로 시작하지 않으면, 부모의 하위 주소가 됩니다.</li>
-        <li>방식이 `child`인 경우 첫번째 주식 메뉴의 주소를 링크 합니다.</li>
-    </ul>
+<ul>
+    <li>편집 후 <em>확인을 눌러 저장해야 정상</em> 반영 됩니다.</li>
+    <li>주소가 `/`, '#', '?'로 시작하지 않으면, 부모의 하위 주소가 됩니다.</li>
+    <li>방식이 `child`인 경우 첫번째 주식 메뉴의 주소를 링크 합니다.</li>
+</ul>
 <?= descClose ?>
 
 <?= formOpen() ?>
@@ -81,7 +81,7 @@
             <?= tdInput('icons[' . $id . ']', $nav['icons']) ?>
 
             <?= tdInput('links[' . $id . ']', $nav['link'], CONTROL_REQUIRED) ?>
-            <?= tdInput('targets['.$id.']', $nav['target'])?>
+            <?= tdInput('targets[' . $id . ']', $nav['target']) ?>
             <td>
                 <input type="checkbox" name="uses[<?= $id ?>]" <?= checked($nav['use']) ?>>
             </td>
@@ -120,6 +120,8 @@
 	(function (window, document) {
 		var body = document.body;
 
+		var addIndex = 10000000;
+
 		var controls = {
 			'depth-in': function (store) {
 				controlDepth(store, +1);
@@ -135,8 +137,34 @@
 			},
 			'add': function (store) {
 				var section = store.section || (store.section = document.body.querySelector('[data-row-section]'));
+				var row = section.firstElementChild.cloneNode(true);
+				var index = addIndex++;
 
+				section.appendChild(row);
 
+				Array.from(row.querySelectorAll('input, textarea, select'))
+					.filter(node => {
+						node.name = node.name.replace(/\[.+]/, '[' + index + ']');
+
+						if (node.tagName === 'INPUT') {
+							var type = node.type;
+							if (type !== 'checkbox') {
+								node.value = '';
+								if (type === 'hidden') {
+									if (node.name.indexOf('updates') > -1) {
+										node.value = index;
+									}
+								} else {
+									if (node.name.indexOf('targets') > -1) {
+										node.value = 'self';
+									}
+									return true;
+								}
+							}
+						} else {
+							node.value = '';
+						}
+					})[0].focus();
 			},
 			'add-top': function (store) {
 				console.log(store);
@@ -153,11 +181,11 @@
 					var depth = Number(inputDepth.value);
 					setUpdate(row);
 
+					inputDepth.value = -1;
 					row.style.display = 'none';
 
 					while (rows[++rowIndex]) {
 						row = rows[rowIndex];
-						console.log(row);
 						store = getRowStore(row);
 						inputDepth = getInputDepth(store);
 						if (depth < Number(inputDepth.value)) {

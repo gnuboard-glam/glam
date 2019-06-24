@@ -1,5 +1,8 @@
 <?php
-list($sub_menu, $title) = $glam->getLocationResources();
+/**
+ * @global $glam \Glam\GlamAdmin
+ */
+list($sub_menu, $title) = $glam->getLocation();
 $g5['title'] = $title;
 
 

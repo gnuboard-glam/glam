@@ -1,7 +1,7 @@
 const gulp = require('gulp');
 const pump = require('pump');
 
-const sass = require('gulp-sass');
+const sass = require('gulp-dart-sass');
 const $sass = () => sass().on('error', sass.logError);
 
 const sassFiles = '**/*.scss';

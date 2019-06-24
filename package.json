@@ -21,10 +21,10 @@
     "youngcart",
     "glam"
   ],
-  "dependencies": {},
   "devDependencies": {
     "gulp": "^4.0.2",
     "gulp-sass": "^4.0.2",
+    "gulp-dart-sass": "^0.9.1",
     "pump": "^3.0.0"
   }
 }

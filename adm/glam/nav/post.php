@@ -20,30 +20,10 @@ $targets = $_POST['targets'] ?? [];
 $db =& $glam->db;
 $table =& $glam->_tableNav;
 
-foreach ($updates as $id) {
-    // $depth = $update[$id] ?? 0;
-    $name = $names[$id] ?? 'Untitled';
-    $class = $classes[$id] ?? '';
-    $icon = $icons[$id] ?? '';
-    $use = $uses[$id] ? 1 : 0;
+$removes = [];
 
-    $link = $links[$id] ?? '#';
-    $target = $targets[$id] ?? 'self';
-
-    $name = implode('|||', [$name, $class, $icon]);
-
-    $db->updated(
-        $table,
-        [
-            'me_name' => $name,
-            'me_link' => $link,
-            'me_use' => $use,
-            'me_target' => $target
-        ],
-        $id,
-        'me_id'
-    );
-}
+$codes = [];
+$orders = [];
 
 $counts = [];
 $lastDepth = 0;
@@ -58,20 +38,71 @@ foreach ($depths as $id => $depth) {
         $counts[$depth] = 9;
     }
 
-    $counts[$depth] ++;
+    $counts[$depth]++;
     $code = implode('', array_slice($counts, 0, $depth + 1));
 
     $lastDepth = $depth;
 
-    $db->updated(
-        $table,
-        [
-            'me_code' => $code,
-            'me_order' => $order++
-        ],
-        $id,
-        'me_id'
-    );
+    $codes[$id] = $code;
+    $orders[$id] = $order++;
+}
+
+foreach ($updates as $index => $id) {
+    $insert = false;
+    if ($id >= 10000000) {
+        $insert = true;
+    }
+
+    $depth = $depths[$id];
+    if ($depth == -1) {
+        $removes[] = $id;
+        unset($depths[$id]);
+        continue;
+    }
+
+    $name = $names[$id] ?? 'Untitled';
+    $class = $classes[$id] ?? '';
+    $icon = $icons[$id] ?? '';
+    $use = $uses[$id] ? 1 : 0;
+
+    $link = $links[$id] ?? '#';
+    $target = $targets[$id] ?? 'self';
+
+    $name = implode('|||', [$name, $class, $icon]);
+
+    $code = $codes[$id];
+    $order = $orders[$id];
+
+    $values = [
+        'me_name' => $name,
+        'me_link' => $link,
+        'me_use' => $use,
+        'me_target' => $target,
+        'me_code' => $code,
+        'me_order' => $order
+    ];
+
+//    echo '<pre>';
+//    var_dump($values);
+//    echo '</pre>';
+//    continue;
+
+    if ($insert) {
+        $db->inserted($table, $values);
+    } else {
+        $db->updated(
+            $table,
+            $values,
+            $id,
+            'me_id'
+        );
+    }
+}
+
+// die;
+
+if ($removes) {
+    $db->deleted($table, $removes, 'me_id');
 }
 
 $glam->back();
