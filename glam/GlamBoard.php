@@ -288,7 +288,7 @@ class GlamBoard extends GlamBase
     {
         $classList = $this->getBodyClass();
 
-        return \trim($this->_bodyClass . ' page_' . \implode(' page_', $classList));
+        return trim($this->_bodyClass . ' page_' . implode(' page_', $classList));
     }
 
     function setBodyClass(string $className)
@@ -310,7 +310,8 @@ class GlamBoard extends GlamBase
 
         foreach ($navs as $nav) {
             $id = $nav['id'];
-            $href = GNU_URL . $nav['link'];
+
+            $href = GNU_URL . ltrim($nav['link'], '/');
             $name = $nav['name'];
 
             $classList = [];

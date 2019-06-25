@@ -214,7 +214,7 @@ class GlamAdmin extends GlamBase
         $this->setNavGroup($glam, '000', 'Glam')
             ->addNav($glam, 10, '도움말', 'glam')
             ->addNav($glam, 20, '메뉴 설정+', 'glam/nav')
-            //->addNav($glam, 1, 'Glam', 'glam')
+            ->addNav($glam, 30, '짧은 주소 설정+', 'glam/rewrite')
             //->addNav($glam, 5, '바로가기', 'shortcut')
             //->addNav($glam, 10, '동기화', 'sync')
             //->addNav($glam, 15, 'API', 'api')
