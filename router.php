@@ -2,6 +2,7 @@
 
 namespace Glam;
 
+use Dot\Dot;
 use Dot\Http\Header;
 
 /**
@@ -22,9 +23,9 @@ if (stream_resolve_include_path($contentFile) !== false) {
         $styleContents = $styles['contents'] ?? false;
         $styleContentsDepth = $styles['contentsDepth'] ?? false;
 
-        if ($styleContents ) {
-            $head->styles->url(10,GNU_THEME_CSS . 'contents.css');
-            if($styleContentsDepth === false) {
+        if ($styleContents) {
+            $head->styles->url(10, GNU_THEME_CSS . 'contents.css');
+            if ($styleContentsDepth === false) {
                 $styles['contentsDepth'] = true;
             }
         }
@@ -71,6 +72,13 @@ if (stream_resolve_include_path($contentFile) !== false) {
     echo $content;
     require GNU_THEME . 'tail.php';
 } else {
-    Header::notFound();
-    $glam->redirect(GNU_URL);
+    $ids = $glam->getBoardList();
+    $id = array_pop(explode('/', $url));
+    if (in_array($id, $ids)) {
+        Dot::redirect(GNU_URL . 'bbs/board.php?bo_table=' . $id);
+    } else {
+        Header::notFound();
+        die;
+        //$glam->redirect(GNU_URL);
+    }
 }

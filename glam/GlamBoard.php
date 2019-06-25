@@ -187,23 +187,26 @@ class GlamBoard extends GlamBase
 
     protected function setLocation(): bool
     {
-        // styles
-        global $theme_config;
-        $styles = $theme_config['styles'] ?? null;
-        $styleIndex = $styles['index'] ?? true;
-
         $script = &$this->script;
         $isIndex = &$this->isIndex;
         if ($isIndex) {
-            if ($styleIndex) {
-                $this->head->styles->url(10, GNU_THEME_CSS . 'index.css');
-            }
-            return true;
+            $this->setLocationIndex();
         } else if ($script === 'router') {
             $this->isContent = true;
             return true;
         }
         return false;
+    }
+
+    protected function setLocationIndex()
+    {
+        global $theme_config;
+        $styles = $theme_config['styles'] ?? null;
+        $styleIndex = $styles['index'] ?? true;
+        if ($styleIndex) {
+            $this->head->styles->url(10, GNU_THEME_CSS . 'index.css');
+        }
+        return true;
     }
 
     function locale()
@@ -246,12 +249,16 @@ class GlamBoard extends GlamBase
                     set_session('locale', $locale);
                 }
                 array_shift($_slugs);
+                if(!isset($_slugs[0])){
+                    $this->setLocationIndex();
+                }
             } elseif (isset($_SESSION['locale'])) {
                 $locale = &$_SESSION['locale'];
             }
 
             $this->locale = $locale;
 
+            define('GNU_LOCALE_URL', GNU_URL . $locale . '/');
             define('GNU_LOCALE_CONTENTS', GNU_CONTENTS . $locale . '/');
         }
 
