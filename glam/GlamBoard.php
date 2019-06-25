@@ -189,10 +189,21 @@ class GlamBoard extends GlamBase
     {
         $script = &$this->script;
         $isIndex = &$this->isIndex;
+
+        global $theme_config;
+        $styles = $theme_config['styles'] ?? null;
+
         if ($isIndex) {
             $this->setLocationIndex();
         } else if ($script === 'router') {
             $this->isContent = true;
+            return true;
+        } else if (isset($GLOBALS['board'], $GLOBALS['board']['bo_table'])) {
+            $this->isBoard = $GLOBALS['board']['bo_table'];
+            $styleBoard = $styles['board'] ?? true;
+            if($styleBoard){
+                $this->head->styles->url(10, GNU_THEME_CSS . 'board.css');
+            }
             return true;
         }
         return false;
@@ -247,10 +258,10 @@ class GlamBoard extends GlamBase
                 if (isset($fixedLocales[$slug])) {
                     $locale = $slug;
                     set_session('locale', $locale);
-                }
-                array_shift($_slugs);
-                if(!isset($_slugs[0])){
-                    $this->setLocationIndex();
+                    array_shift($_slugs);
+                    if (!isset($_slugs[0])) {
+                        $this->setLocationIndex();
+                    }
                 }
             } elseif (isset($_SESSION['locale'])) {
                 $locale = &$_SESSION['locale'];
@@ -278,6 +289,10 @@ class GlamBoard extends GlamBase
                 $classes[] = implode('-', array_slice($_slugs, 0, $key + 1));
             }
             return $classes;
+        }
+
+        if ($this->isBoard) {
+            return [$this->isBoard];
         }
 
         return [];
