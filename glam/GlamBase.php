@@ -62,8 +62,8 @@ abstract class GlamBase
      */
     protected $options;
 
-    public $_tableConfig = \G5_TABLE_PREFIX . 'config';
-    public $_tableOptions = \G5_TABLE_PREFIX . 'glam_options';
+    public $_tableConfig = G5_TABLE_PREFIX . 'config';
+    public $_tableOptions = G5_TABLE_PREFIX . 'glam_options';
 
     /**
      * @var string
@@ -99,6 +99,7 @@ abstract class GlamBase
         $this->cache = new Cache(new CacheFilePool(GNU . 'data/glam-cache'));
 
         define('GLAM_DEV', isLocalServer() || $options['dev']);
+        define('GLAM_TYPE', $options['solution']);
         // move to plugin
         define('GLAM_URL', G5_URL . '/plugin/glam/');
         define('GLAM_THEME', GLAM . 'theme/');
@@ -112,6 +113,7 @@ abstract class GlamBase
         define('GLAM_JS', GLAM_URL . 'js/');
         define('GLAM_CSSDOT', GLAM_URL . 'cssdot/prebuilt/');
         define('GLAM_JSDOT', GLAM_URL . 'jsdot/');
+
         define('GNU_THEME', GNU . $theme . '/');
         define('GNU_THEME_URL', GNU_URL . $theme . '/');
         define('GNU_TEMPLATES', GNU_THEME . 'templates/');

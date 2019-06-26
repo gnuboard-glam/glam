@@ -77,6 +77,9 @@ class GlamBoard extends GlamBase
     function glam_ready()
     {
         parent::glam_ready();
+
+        define('GNU_JS', GNU_URL . 'js/');
+
         $this->glam_board();
 
         $script = \pathinfo($_SERVER['SCRIPT_NAME'], \PATHINFO_FILENAME);
@@ -139,12 +142,7 @@ class GlamBoard extends GlamBase
 
             // fixed target
             foreach ($flat as &$nav) {
-                if ($nav['target'] === 'child') {
-                    if (count($nav['children'])) {
-                        $nav['link'] = $nav['children'][0]['link'];
-                    }
-                    $nav['target'] = 'self';
-                }
+                $nav['link'] = $this->_getNavLink($nav);
             }
 
             $cache->set('navs', $nested);
@@ -200,8 +198,9 @@ class GlamBoard extends GlamBase
             return true;
         } else if (isset($GLOBALS['board'], $GLOBALS['board']['bo_table'])) {
             $this->isBoard = $GLOBALS['board']['bo_table'];
-            $styleBoard = $styles['board'] ?? true;
-            if($styleBoard){
+            $styleBoard = $styles['board'] ?? false;
+            $this->head->styles->url(10, GLAM_CSS . 'board.css');
+            if ($styleBoard) {
                 $this->head->styles->url(10, GNU_THEME_CSS . 'board.css');
             }
             return true;
@@ -406,4 +405,16 @@ class GlamBoard extends GlamBase
         return '';
     }
 
+    protected function _getNavLink(array $nav)
+    {
+        if ($nav['target'] === 'child') {
+            if (count($nav['children'])) {
+                $child = $nav['children'][0];
+                return $child['target'] === 'child' ?
+                    $this->_getNavLink($child) :
+                    $child['link'];
+            }
+        }
+        return $nav['link'] ?? '#';
+    }
 }

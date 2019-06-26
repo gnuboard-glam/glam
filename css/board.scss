@@ -1,0 +1,6 @@
+@import '../cssdot/src/scss';
+
+// compatible with gnu original
+.sound_only {
+  @include hide;
+}
