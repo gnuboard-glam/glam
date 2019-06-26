@@ -122,7 +122,7 @@ class GlamBoard extends GlamBase
                 if ($depth) {
                     $parent = &$parents[$depth - 1];
 
-                    $_notSlug = '/^[?]/';
+                    $_notSlug = '/^[\/?]/';
                     if (!preg_match($_notSlug, $target['link'])) {
                         $glue = $link[0] === '#' ? '' : '/';
                         if (!preg_match($_notSlug, $parent['link'])) {
