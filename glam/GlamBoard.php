@@ -352,12 +352,16 @@ class GlamBoard extends GlamBase
                 $name = '<b>' . $name . '</b>';
             }
 
+            if($nav['class']){
+                $classList[] = $nav['class'];
+            }
+
             $classList = $classList ?
                 ' class="' . implode(' ', $classList) . '"' :
                 '';
 
             $html[] = '<li data-id="' . $id . '"' . $classList . '>';
-            $html[] = '<a href="' . $href . '">' . $name . ' </a>';
+            $html[] = '<a href="' . $href . '"><span>' . $name . '</span></a>';
             if ($optionsChildren && $nav['children']) {
                 $html[] = $this->navList($nav);
             }
@@ -399,10 +403,14 @@ class GlamBoard extends GlamBase
     function activeNavDepth($depth = 1)
     {
         $depth--;
-        $activatedNav = &$this->activatedNav;
-        if ($activatedNav && $activatedNav['depth'] >= $depth && $activatedNav['children']) {
-            return true;
+        $activatedNav = $this->activatedNav;
+        if ($activatedNav && $activatedNav['depth'] >= $depth) {
+            while ($activatedNav['depth'] > $depth && $activatedNav['parent']) {
+                $activatedNav = $activatedNav['parent'];
+            }
+            return $activatedNav['children'];
         }
+
         return false;
     }
 

@@ -26,7 +26,7 @@ abstract class GlamBase
      * split uri by slash
      * @var array
      */
-    protected $_slugs;
+    public $_slugs;
 
     protected $_theme;
 
