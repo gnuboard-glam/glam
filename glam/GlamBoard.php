@@ -313,14 +313,30 @@ class GlamBoard extends GlamBase
     function navList($root = null, $options = [])
     {
         $options += [
+            'title' => 0,
             'children' => true
         ];
-        $optionsChildren = &$options['children'];
-        $navs = $root ?
-            $root['children'] :
-            $this->navs;
 
-        $html = ['<ul>'];
+        $optionsChildren = &$options['children'];
+
+        if (!$root) {
+            $root = [
+                'name' => '메뉴',
+                'children' => $this->navs
+            ];
+        }
+
+        $navs = $root['children'];
+
+        $html = [];
+
+        if ($options['title']) {
+            $hn = 'h' . $options['title'];
+            $html[] = "<{$hn}>{$root['name']}</{$hn}>";
+            $options['title'] = false;
+        }
+
+        $html[] = '<ul>';
 
         foreach ($navs as $nav) {
             $id = $nav['id'];
@@ -390,7 +406,7 @@ class GlamBoard extends GlamBase
 
     function navCrumb()
     {
-        $nav = $this->activatedNav;
+        $nav =  $this->activatedNav;
         if ($nav) {
             $navs = [$nav];
             while ($nav['parent']) {
