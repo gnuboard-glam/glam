@@ -122,12 +122,13 @@ class GlamBoard extends GlamBase
                 if ($depth) {
                     $parent = &$parents[$depth - 1];
 
-                    $_notSlug = '/^[\/#\?]/';
+                    $_notSlug = '/^[?]/';
                     if (!preg_match($_notSlug, $target['link'])) {
+                        $glue = $link[0] === '#' ? '' : '/';
                         if (!preg_match($_notSlug, $parent['link'])) {
-                            $target['link'] = $parent['link'] . '/' . $link;
+                            $target['link'] = $parent['link'] . $glue . $link;
                         } else {
-                            $target['link'] = $parent['parentLink'] . '/' . $link;
+                            $target['link'] = $parent['parentLink'] . $glue . $link;
                         }
                     } else {
                         $target['parentLink'] = $parent['link'];
@@ -397,16 +398,17 @@ class GlamBoard extends GlamBase
 
     function activeNavDepth($depth = 1)
     {
+        $depth--;
         $activatedNav = &$this->activatedNav;
-        if ($activatedNav) {
-            return $activatedNav['depth'] >= $depth;
+        if ($activatedNav && $activatedNav['depth'] >= $depth && $activatedNav['children']) {
+            return true;
         }
         return false;
     }
 
     function navCrumb()
     {
-        $nav =  $this->activatedNav;
+        $nav = $this->activatedNav;
         if ($nav) {
             $navs = [$nav];
             while ($nav['parent']) {

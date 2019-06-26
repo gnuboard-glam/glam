@@ -4,6 +4,7 @@ namespace Glam;
 
 use Dot\Dot;
 use Dot\Http\Header;
+use function Dot\isLocalServer;
 
 /**
  * @global $glam GlamBoard
@@ -59,7 +60,7 @@ if (stream_resolve_include_path($contentFile) !== false) {
 
     $cacheName = 'contents_' . $url;
 
-    $content = $_SERVER['REQUEST_TIME'] - fileatime($contentFile) > 180 ?
+    $content = !isLocalServer() && $_SERVER['REQUEST_TIME'] - fileatime($contentFile) > 180 ?
         $glam->cache->get($cacheName) :
         null;
     require GNU_THEME . 'head.php';
