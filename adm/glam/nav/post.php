@@ -28,6 +28,7 @@ $orders = [];
 $counts = [];
 $lastDepth = 0;
 $order = 0;
+
 foreach ($depths as $id => $depth) {
 
     if ($lastDepth > $depth) {
@@ -63,7 +64,7 @@ foreach ($updates as $index => $id) {
     $name = $names[$id] ?? 'Untitled';
     $class = $classes[$id] ?? '';
     $icon = $icons[$id] ?? '';
-    $use = $uses[$id] ? 1 : 0;
+    $use = $uses[$id] ? '1' : '0';
 
     $link = $links[$id] ?? '#';
     $target = $targets[$id] ?? 'self';
@@ -82,11 +83,6 @@ foreach ($updates as $index => $id) {
         'me_order' => $order
     ];
 
-//    echo '<pre>';
-//    var_dump($values);
-//    echo '</pre>';
-//    continue;
-
     if ($insert) {
         $db->inserted($table, $values);
     } else {
@@ -98,8 +94,6 @@ foreach ($updates as $index => $id) {
         );
     }
 }
-
-// die;
 
 if ($removes) {
     $db->deleted($table, $removes, 'me_id');

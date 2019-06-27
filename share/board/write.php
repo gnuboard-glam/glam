@@ -1,28 +1,37 @@
 <?php
 
-if (!defined('_GNUBOARD_')) {
-    die;
-}
+use Dot\Html\Component\FormField;
+use Dot\Html\Component\Grid;
 
-$glam->head->script(GLAM_URL . 'js/board/write.js');
+require __DIR__ . '/write/head.php';
+?>
+<fieldset>
+    <legend>글 작성</legend>
 
-function boardWriteFormOpen()
-{
-    global $action_url, $w, $bo_table, $wr_id, $sca, $sfl, $stx, $spt, $sst, $sod, $page;
+    <?php if (!$member['mb_id']): ?>
+        <?= Grid::open(2, 20) ?>
+        <?= FormField::div($name->label('이름')) ?>
+        <?= FormField::div($password->label('비밀번호')) ?>
+        <?= Grid::close ?>
+    <?php endif ?>
 
-    $uniqueId = get_uniqid();
-    return <<<HTML
-    <form name="fwrite" id="fwrite" action="{$action_url}" method="post" enctype="multipart/form-data" autocomplete="off">
-    <input type="hidden" name="uid" value="{$uniqueId}">
-    <input type="hidden" name="w" value="{$w}">
-    <input type="hidden" name="bo_table" value="{$bo_table}">
-    <input type="hidden" name="wr_id" value="{$wr_id}">
-    <input type="hidden" name="sca" value="{$sca}">
-    <input type="hidden" name="sfl" value="{$sfl}">
-    <input type="hidden" name="stx" value="{$stx}">
-    <input type="hidden" name="spt" value="{$spt}">
-    <input type="hidden" name="sst" value="{$sst}">
-    <input type="hidden" name="sod" value="{$sod}">
-    <input type="hidden" name="page" value="{$page}">
-HTML;
-}
+    <?= FormField::div($subject->label('제목')) ?>
+    <?= FormField::div($content->label('내용')) ?>
+
+    <div class="form-field">
+            <span class="form-label">
+                기능
+            </span>
+        <span class="form-checkboxes">
+                <?php foreach ($options as $label => $checkbox): ?>
+                    <label><?= $checkbox ?> <?= $label ?></label>
+                <?php endforeach ?>
+            </span>
+    </div>
+
+    <div class="form-buttons">
+        <input type="submit" value="확인">
+    </div>
+</fieldset>
+
+<?=formClose?>

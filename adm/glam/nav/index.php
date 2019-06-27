@@ -8,7 +8,7 @@ namespace Glam;
 
 require '../../_common.php';
 
-$navs = $glam->getNavs();
+$navs = $glam->getNavs(['all' => true]);
 
 if ($navs->count() < 1) {
     $navs = [[

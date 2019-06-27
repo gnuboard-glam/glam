@@ -13,11 +13,15 @@ const glamCssSrc = glamSrc + 'css/';
 const glamSassFiles = glamCssSrc + sassFiles;
 const themeSassFiles = themeSrc + sassFiles;
 
-console.log(themeSassFiles);
+function since(task) {
+	return {
+		since: gulp.lastRun(task)
+	};
+}
 
 gulp.task('glam-sass', done => {
 	pump(
-		gulp.src(glamSassFiles),
+		gulp.src(glamSassFiles, since('glam-sass')),
 		$sass(),
 		gulp.dest(glamCssSrc),
 		done
@@ -26,7 +30,7 @@ gulp.task('glam-sass', done => {
 
 gulp.task('theme-sass', done => {
 	pump(
-		gulp.src(themeSassFiles),
+		gulp.src(themeSassFiles, since('theme-sass')),
 		$sass(),
 		gulp.dest(themeSrc),
 		done
