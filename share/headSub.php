@@ -17,4 +17,3 @@ $glam = Glam::that();
 $glam->head->scripts
     ->url(GNU_JS . 'jquery-1.12.4.min.js')
     ->url(GNU_JS . 'common.js');
-

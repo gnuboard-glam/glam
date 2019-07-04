@@ -103,7 +103,7 @@ $writeText = '쓰기';
                     </td>
                 <?php endif ?>
                 <td class="board-item-td board-item-subject">
-                    <?= $item['icon_reply']; ?>
+                    <?=$item['icon_reply'];?>
                     <a href="<?= $item['href'] ?>">
                         <?= $item['subject'] ?>
                     </a>
