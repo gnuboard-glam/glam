@@ -10,7 +10,7 @@ require __DIR__ . '/view/head.php';
             <?php if ($category_name): ?>
                 <dl>
                     <dt>분류<i>:</i></dt>
-                    <dd><?= $$view['ca_name'] ?></dd>
+                    <dd><?= $view['ca_name'] ?></dd>
                 </dl>
             <?php endif ?>
 
@@ -32,7 +32,7 @@ require __DIR__ . '/view/head.php';
     </header>
 
     <main>
-        <?= ''//viewLinks()?>
+        <?= ''//viewLinks() ?>
 
         <?php
         // 파일 출력
