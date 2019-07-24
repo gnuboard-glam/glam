@@ -22,9 +22,11 @@
     "glam"
   ],
   "devDependencies": {
+    "ftp-deploy": "^2.3.3",
     "gulp": "^4.0.2",
-    "gulp-sass": "^4.0.2",
     "gulp-dart-sass": "^0.9.1",
+    "gulp-sass": "^4.0.2",
+    "inquirer": "^6.5.0",
     "pump": "^3.0.0"
   }
 }

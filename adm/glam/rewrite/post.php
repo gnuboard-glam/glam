@@ -25,7 +25,7 @@ HTACCESS;
 
 $contents[] = <<<HTACCESS
 RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-f
 HTACCESS;
 
 if ($isShop) {
@@ -40,12 +40,16 @@ HTACCESS;
 
 $boardIds = &$glam->getBoardList();
 if ($boardIds) {
-    $boardIds = implode('|', $boardIds);
-    $contents[] = <<<HTACCESS
+    if (G5_VERSION < 3.4) {
+
+    } else {
+        $boardIds = implode('|', $boardIds);
+        $contents[] = <<<HTACCESS
     RewriteRule ^({$boardIds})$ bbs/board.php?rewrite=1&bo_table=$1 [QSA,L]
     RewriteRule ^({$boardIds})/([0-9]+)$ bbs/board.php?rewrite=1&bo_table=$1&wr_id=$2 [QSA,L]
     RewriteRule ^({$boardIds})/write$ bbs/write.php?rewrite=1&bo_table=$1 [QSA,L]
 HTACCESS;
+    }
 }
 
 $contents[] = <<<HTACCESS
