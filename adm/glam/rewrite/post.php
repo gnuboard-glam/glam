@@ -54,7 +54,7 @@ HTACCESS;
 
 $contents[] = <<<HTACCESS
     # contents
-    RewriteRule ^((?!(plugin/glam/)?adm/)[^.]+)$ plugin/glam/router.php?url=$1 [QSA,L]
+    RewriteRule ^((?!(plugin/glam/)?adm/|php.+admin)[^.]+)$ plugin/glam/router.php?url=$1 [QSA,L]
 HTACCESS;
 
 $contents = implode(PHP_EOL, $contents);

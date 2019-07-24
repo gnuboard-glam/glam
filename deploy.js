@@ -11,6 +11,10 @@ const defaultCofig = {
 	port: 21,
 	localRoot: root,
 	exclude: [
+		'.git/**/*',
+		'**/.git/**/*',
+		'.idea/**/*',
+		'**/.idea/**/*',
 		'node_modules/**/*',
 		'**/node_modules/**/*',
 		'**/package-lock.json',
@@ -42,10 +46,6 @@ const targetPaths = {
 	[TARGET_ALL]: ['**/*'],
 	[TARGET_THEME]: ['theme/**/*'],
 	[TARGET_THEME_CONTENTS]: [
-		'.git/**/*',
-		'**/.git/**/*',
-		'.idea/**/*',
-		'**/.idea/**/*',
 		'theme/**/contents/**/*',
 		'theme/**/css/.css',
 		'theme/**/js/*.js'
@@ -138,5 +138,7 @@ inquirer.prompt(ask).then(answer => {
 				});
 			}
 		})
-		.catch(error => console.error(error));
+		.catch(error => {
+			console.error(`\x1b[31m${error.message}\x1b[0m`);
+		});
 });
