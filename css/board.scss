@@ -5,6 +5,14 @@
   @include hide;
 }
 
+.board {
+  &-form {
+    legend {
+      @include hide;
+    }
+  }
+}
+
 .board-list-head {
   margin-bottom: 0.625em;
 }
@@ -310,16 +318,15 @@ td.board-item-subject {
 
 #captcha {
   position: relative;
-  background-color: white;
-  border: solid 1px #ccc;
-  padding: 10px;
-}
+  border: none;
 
-#captcah:after {
-  content: ''; /*float*/
-  display: block;
-  height: 0;
-  clear: both; /***/
+  legend {
+    @include hide;
+  }
+
+  &_img {
+    height: 35px;
+  }
 }
 
 #captcha_img,
@@ -327,10 +334,6 @@ td.board-item-subject {
 #captcha_reload {
   float: left;
   vertical-align: middle;
-}
-
-#captcha_img {
-  height: 100%;
 }
 
 #captcha_mp3,
@@ -343,7 +346,6 @@ td.board-item-subject {
   border-right: none;
   height: 35px;
   line-height: 35px;
-  margin-top: 12px;
   font-family: sans-serif;
 }
 
@@ -355,68 +357,54 @@ td.board-item-subject {
 #captcha_info {
   float: right;
   font-family: sans-serif;
-  line-height: 60px;
+  line-height: 35px;
 }
 
+.board-attach {
+  position: relative;
+  height: 100%;
 
-.board-attaches {
-  margin-top: 10px;
-  border-top: solid 1px #ccc;
-  padding-top: 10px;
-}
+  &es {
+    &-title {
+      margin-bottom: 1.25em;
+    }
+  }
 
-.board-attaches-title {
-  margin-bottom: 10px;
-}
+  &-link {
+    display: block;
+    border: solid 1px rgba(0, 0, 0, 0.12);
+    background-color: rgba(0, 0, 0, 0.03);
+    padding: 0.626em;
 
-.board-attach-link {
-  border: solid 1px #f0f0f0;
-  background-color: #fafafa;
-  display: block;
-}
+  }
 
-.board-attach-link:hover {
-  border-color: #ccc;
-  background-color: #f0f0f0;
-}
+  &-name {
+    font-size: 1.2em;
+    height: 1.2em;
+    letter-spacing: 0;
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-weight: bold;
 
-.board-attach-info {
-  margin: 10px;
-}
+  }
 
-.board-attaches:after {
-  content: ''; /*float*/
-  display: block;
-  height: 0;
-  clear: both; /***/
-}
+  &-size {
+    letter-spacing: 0;
+  }
 
-.board-attach-name {
-  display: block;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  font-weight: bold;
-  height: 1.2em;
-}
+  &-count {
+    font-size: 0.875em;
+  }
 
-.board-attach-size,
-.board-attach-time {
-  font-size: 0.875em;
-}
+  &-download {
+  }
 
-.board-attach-size {
-  font-weight: bold;
-}
-
-.board-attach-download {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-}
-
-.board-links {
-
+  &-time,
+  &-download {
+    font-size: 0.875em;
+  }
 }
 
 .form {
@@ -466,9 +454,58 @@ td.board-item-subject {
       }
     }
   }
+
+  &-buttons {
+
+    @include float;
+
+    margin-top: 0.626em;
+
+    &-left {
+      float: left;
+    }
+
+    &-right {
+      float: right;
+      text-align: right;
+    }
+
+    a {
+      display: inline-block;
+    }
+
+    a,
+    input,
+    button {
+      border: none;
+      background-color: #f0f0f0;
+      padding: 0 1.25em;
+      height: 36px;
+      line-height: 36px;
+
+      &:hover {
+        background-color: #ccc;
+      }
+    }
+
+    input[type=submit],
+    button[type=submit] {
+      font-weight: bold;
+    }
+  }
 }
 
 .form-field {
+  &_required {
+    .form-field-label {
+      font-weight: bold;
+
+      em {
+        font-weight: normal;
+      }
+    }
+  }
+
   &-input {
     position: relative;
 
@@ -483,5 +520,31 @@ td.board-item-subject {
         border-bottom-color: black;
       }
     }
+
+    input[type=file] {
+      border-bottom: none;
+      cursor: pointer;
+    }
+  }
+
+
+  &_files {
+    border: solid 1px #ccc;
+    padding: 0.626em;
+    background-color: rgba(0, 0, 0, 0.03);
+
+    .form-field {
+      &-label {
+        margin-bottom: 0.313em;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &-description {
+    font-size: 0.875em;
   }
 }

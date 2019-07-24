@@ -1,6 +1,4 @@
 <?php
-
-
 /**
  * @global $list array
  * @global $bo_table string
@@ -13,6 +11,9 @@
  * @global $sst
  * @global $sod
  */
+
+require __DIR__ . '/../_global.php';
+
 $limit = count($list);
 
 if (!isset($useListHead)) {
@@ -24,13 +25,22 @@ if (isset($useDelete) && $useDelete) {
 }
 
 // $updateHref = 'write.php?bo_table=' . $bo_table . '&page='.$page.'&w=u&wr_id=';
-$updateHref = GNU_URL . "{$bo_table}/write?page={$page}&w=u&wr_id=";
-$deleteHref = GNU_URL . 'delete.php?bo_table=' . $bo_table . '&page=' . $page . '&token=' . $token . '&wr_id=';
-$categoryHref = GNU_URL . 'board.php?bo_table=' . $bo_table . '&sca=';
-$listHref = GNU_URL . "{$bo_table}";
+
+if($glam->is54){
+    $listHref = GNU_URL . "{$bo_table}";
+    $writeHref = $listHref . '/write';
+    // todo check
+    $updateHref = $writeHref . "?w=u";
+}else{
+    $categoryHref = GNU_URL . 'board.php?bo_table=' . $bo_table . '&sca=';
+    $listHref = GNU_URL . 'bbs/board.php?bo_table=' . $bo_table;
+    $writeHref = GNU_URL . 'bbs/write.php?bo_table=' . $bo_table;
+    $updateHref = GNU_URL . 'bbs/write.php?bo_table=' . $bo_table . '&w=u&wr_id=';
+    $deleteHref = GNU_URL . 'delete.php?bo_table=' . $bo_table . '&page=' . $page . '&token=' . $token . '&wr_id=';
+}
 
 if ($sca) {
-    $write_href .= '&sca=' . $sca;
+    $writeHref .= '&sca=' . $sca;
 }
 
 // todo: make this

@@ -1,15 +1,28 @@
 <?php
-if(!isset($submitFor)) {
+if (!isset($submitFor)) {
     $submitFor = $w == 'u' ? '수정' : '등록';
 }
 ?>
+
+
+<?php if ($is_use_captcha) { //자동등록방지  ?>
+    <div class="write_div">
+        <?php echo $captcha_html ?>
+    </div>
+<?php } ?>
+
 <div class="form-buttons">
-    <input type="submit" value="<?=$submitFor?>" id="btn_submit" accesskey="s" class="button button-submit">
-    <a href="<?=$listHref?>" class="button button-cancel">취소</a>
+    <div class="form-buttons-left">
+        <input type="submit" value="<?= $submitFor ?>(Alt+S)" accesskey="s">
+    </div>
+    <div class="form-buttons-right">
+        <a href="<?= $listHref ?>" data-confirm>목록</a>
+    </div>
 </div>
 
-<?='</form>'?>
-<?='</div>'?>
+<?= '</form>' ?>
+<?= '</div>' ?>
+<?= '</fieldset>' ?>
 <script type="text/javascript">
 	function fwrite_submit_editor() {
         <?= $editor_js;?>

@@ -75,9 +75,16 @@ abstract class GlamBase
      */
     public $head;
 
+    /**
+     * @var boolean
+     */
+    public $is54;
+
     final function __construct($options)
     {
         $options += DEFAULT_OPTIONS;
+
+        $this->is54 = (int) G5_GNUBOARD_VER >= 5.4;
 
         $uri = $_SERVER['REQUEST_URI'];
         $uri = preg_replace('/[?#].*$/', '', $uri); // remove hash, search

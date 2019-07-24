@@ -6,7 +6,7 @@ FTP 서버에 배포를 위한 CLI 도우미를 제공하여, 불필요한 파�
 node plugin/glam/deploy
 ```
 > ```bash
-> cdcd
+> node plugin/glam/deploy --id=anonymous --password=password
 > ```
 
 * `--host`: FTP 주소

@@ -28,9 +28,11 @@ use Dot\Html\Tag\Input\Hidden;
 use Dot\Html\Tag\Input\Password;
 use Dot\Html\Tag\Textarea;
 
-// $glam->head->scripts->url(GLAM_JS . 'board.js');
+require __DIR__ . '/../_global.php';
 
-Dev::mode();
+$glam->head->scripts->url(GLAM_JS . 'board/write.js');
+
+$listHref = GNU_URL . "bbs/board.php?bo_table=${bo_table}";
 
 $options = [];
 $hiddenOptions = [];
@@ -70,15 +72,18 @@ $name = (new Input('wr_name', $wr_name ?? ''))
 $password = (new Password('wr_password'))
     ->required();
 
-$subject = (new Input('wr_subject', $wr_subject ?? ''))
-    ->required();
+$subject = (new Input('wr_subject', $subject ?? ''))
+    ->required()
+    ->autofocus();
 
-$content = (new Textarea('wr_content', $wr_subject ?? ''))
+$content = (new Textarea('wr_content', $content ?? ''))
     ->required();
 
 $is_limit = $write_min || $write_max;
 $is_homepage = null;
 $is_email = null;
+
+// $attach = (new Input(''))
 
 const formClose = '</form>';
 ?>

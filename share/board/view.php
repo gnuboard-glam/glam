@@ -1,5 +1,16 @@
 <?php
 require __DIR__ . '/view/head.php';
+
+$hasAttaches = count($view['file']);
+
+$attachedFiles = [];
+foreach($view['file'] as $file){
+    if(!(isset($file['source']) && $file['source'])){
+        continue;
+    }
+    $attachedFiles[] = $file;
+}
+
 ?>
 
 
@@ -9,88 +20,32 @@ require __DIR__ . '/view/head.php';
         <section class="board-article-info">
             <?php if ($category_name): ?>
                 <dl>
-                    <dt>분류<i>:</i></dt>
+                    <dt>분류<span class="glue">:</span></dt>
                     <dd><?= $view['ca_name'] ?></dd>
                 </dl>
             <?php endif ?>
 
             <dl>
-                <dt>작성자<i>:</i></dt>
+                <dt>작성자<span class="glue">:</span></dt>
                 <dd><?= $view['name'] ?></dd>
             </dl>
 
             <dl>
-                <dt>작성일<i>:</i></dt>
+                <dt>작성일<span class="glue">:</span></dt>
                 <dd><?= date("y-m-d H:i", strtotime($view['wr_datetime'])) ?></dd>
             </dl>
 
             <dl class="board-article-hit">
-                <dt>조회수<i>:</i></dt>
+                <dt>조회수<span class="glue">:</span></dt>
                 <dd><?= number_format($view['wr_hit']) ?></dd>
             </dl>
         </section>
     </header>
 
     <main>
-        <?= ''//viewLinks() ?>
-
-        <?php
-        // 파일 출력
-        $v_img_count = count($view['file']);
-        if ($v_img_count) {
-            echo '<div class="board-article-images">';
-
-            for ($i = 0; $i <= count($view['file']); $i++) {
-                if ($view['file'][$i]['view']) {
-                    echo get_view_thumbnail($view['file'][$i]['view']);
-                }
-            }
-
-            echo "</div>\n";
-        }
-        ?>
-
         <div class="board-article-content">
             <?= $content ?>
         </div>
-
-        <!-- 스크랩 추천 비추천 시작 { -->
-        <?php if ($scrap_href || $good_href || $nogood_href) { ?>
-            <div id="bo_v_act">
-
-                <?php if ($useScrap && $scrap_href): ?>
-                    <a href="<?= $scrap_href; ?>" target="_blank" class="btn_b01"
-                       onclick="win_scrap(this.href); return false;">스크랩</a>
-                <?php endif ?>
-
-                <?php if ($good_href) { ?>
-                    <span class="bo_v_act_gng">
-                <a href="<?= $good_href . '&amp;' . $qstr ?>" id="good_button"
-                   class="btn_b01">추천 <strong><?= number_format($view['wr_good']) ?></strong></a>
-                <b id="bo_v_act_good"></b>
-            </span>
-                <?php } ?>
-                <?php if ($nogood_href) { ?>
-                    <span class="bo_v_act_gng">
-                <a href="<?= $nogood_href . '&amp;' . $qstr ?>" id="nogood_button"
-                   class="btn_b01">비추천  <strong><?= number_format($view['wr_nogood']) ?></strong></a>
-                <b id="bo_v_act_nogood"></b>
-            </span>
-                <?php } ?>
-            </div>
-        <?php } else {
-            if ($board['bo_use_good'] || $board['bo_use_nogood']) {
-                ?>
-                <div id="bo_v_act">
-                    <?php if ($board['bo_use_good']) { ?><span>
-                        추천 <strong><?= number_format($view['wr_good']) ?></strong></span><?php } ?>
-                    <?php if ($board['bo_use_nogood']) { ?><span>
-                        비추천 <strong><?= number_format($view['wr_nogood']) ?></strong></span><?php } ?>
-                </div>
-                <?php
-            }
-        }
-        ?>
     </main>
 
     <?php if ($is_signature): ?>
@@ -99,13 +54,12 @@ require __DIR__ . '/view/head.php';
         </section>
     <?php endif ?>
 
-    <?php if ($files): ?>
+    <?php if ($attachedFiles): ?>
         <section class="board-attaches">
-            <h3 class="board-attaches-title">첨부파일 <?= count($files) ?>개<i>:</i></h3>
-
-            <ul class="cut-c5_20 w7-cut-c3_20 w4-cut-c2_20">
-                <?php foreach ($files as $file) : ?>
-                    <li class="cut-c">
+            <h3 class="board-attaches-title"><?= count($attachedFiles) ?>개 첨부 파일</h3>
+            <ul class="dot-grid-gap10 dot-grid2 dot-grid3-76 dot-grid4-at-12">
+                <?php foreach ($attachedFiles as $file) : ?>
+                    <li class="dot-grid">
                         <div class="board-attach respond-height_16-9">
                             <a href="<?= $file['href'] ?>" title="<?= $file['source'] ?> 파일 내려 받기"
                                class="board-attach-link respond-height">
@@ -113,7 +67,7 @@ require __DIR__ . '/view/head.php';
                                     <dt class="board-attach-name"><?= $file['source'] ?></dt>
                                     <dd class="board-attach-size"><?= $file['size'] ?></dd>
                                     <dd class="board-attach-time"><?= $file['datetime'] ?></dd>
-                                    <dd class="board-attach-download"><?= $file['download'] ?>회 내려받음</dd>
+                                    <dd class="board-attach-download"><?= $file['download'] ?>회 내려 받음</dd>
                                     <?php if ($file['content']): ?>
                                         <dd class="board-attach-content"><?= $file['content'] ?></dd>
                                     <?php endif ?>
@@ -128,7 +82,7 @@ require __DIR__ . '/view/head.php';
 
     <?php if (!$useYoutube && $links): ?>
         <section class="board-links">
-            <h3>링크<i>:</i></h3>
+            <h3>링크<span class="glue">:</span></h3>
             <ul>
                 <?php foreach ($links as $link): ?>
                     <li class="board-link">
