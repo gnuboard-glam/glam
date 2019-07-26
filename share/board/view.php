@@ -4,8 +4,8 @@ require __DIR__ . '/view/head.php';
 $hasAttaches = count($view['file']);
 
 $attachedFiles = [];
-foreach($view['file'] as $file){
-    if(!(isset($file['source']) && $file['source'])){
+foreach ($view['file'] as $file) {
+    if (!(isset($file['source']) && $file['source'])) {
         continue;
     }
     $attachedFiles[] = $file;
@@ -106,15 +106,26 @@ foreach($view['file'] as $file){
 
     <div class="board-modes">
         <div class="board-modes-left">
-            <?php if ($update_href) { ?><a href="<?= $update_href ?>"
-                                           class="board-mode board-mode-left board-mode-update">수정</a><?php } ?>
-            <?php if ($delete_href) { ?><a href="<?= $delete_href ?>"
-                                           class="board-mode board-mode-left board-mode-delete"
-                                           onclick="del(this.href); return false;">삭제</a><?php } ?>
-            <?php if ($reply_href) { ?><a href="<?= $reply_href ?>" class="board-mode board-mode-left board-mode-reply">
-                    답변</a><?php } ?>
-            <?php if ($search_href) { ?><a href="<?= $search_href ?>"
-                                           class="board-mode board-mode-left board-mode-search">검색</a><?php } ?>
+            <?php if ($update_href): ?>
+            <a href="<?= $update_href ?>"
+               class="board-mode board-mode-left board-mode-update">
+                수정
+            </a>
+            <?php endif ?>
+            <?php if ($delete_href) :?>
+            <a href="<?= $delete_href ?>" class="board-mode board-mode-left board-mode-delete"
+               onclick="del(this.href); return false;">삭제</a>
+            <?php endif ?>
+            <?php if ($reply_href) : ?>
+            <a href="<?= $reply_href ?>" class="board-mode board-mode-left board-mode-reply">
+                답변
+            </a>
+            <?php endif ?>
+            <?php if ($search_href) : ?>
+            <a href="<?= $search_href ?>" class="board-mode board-mode-left board-mode-search">
+                검색
+            </a>
+            <?php endif ?>
         </div>
         <div class="board-modes-right">
             <a href="<?= $list_href ?>" class="board-mode board-mode-right board-mode-list">목록</a>
