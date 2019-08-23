@@ -75,6 +75,8 @@ if (stream_resolve_include_path($contentFile) !== false) {
 } else {
     $ids = $glam->getBoardList();
     $id = array_pop(explode('/', $url));
+    $id = str_replace('_', '-', $id);
+
     if (in_array($id, $ids)) {
         Dot::redirect(GNU_URL . 'bbs/board.php?bo_table=' . $id);
     } else {
