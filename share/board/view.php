@@ -1,4 +1,10 @@
 <?php
+/**
+ * @global $search_href
+ * @global $useComment
+ * @global $withListClass
+ * @global $useYoutube
+ */
 require __DIR__ . '/view/head.php';
 
 $hasAttaches = count($view['file']);
@@ -20,23 +26,23 @@ foreach ($view['file'] as $file) {
         <section class="board-article-info">
             <?php if ($category_name): ?>
                 <dl>
-                    <dt>분류<span class="glue">:</span></dt>
+                    <dt><?= $categoryTh ?><span class="glue">:</span></dt>
                     <dd><?= $view['ca_name'] ?></dd>
                 </dl>
             <?php endif ?>
 
             <dl>
-                <dt>작성자<span class="glue">:</span></dt>
+                <dt><?= $writeTh ?><span class="glue">:</span></dt>
                 <dd><?= $view['name'] ?></dd>
             </dl>
 
             <dl>
-                <dt>작성일<span class="glue">:</span></dt>
+                <dt><?= $dateTh ?><span class="glue">:</span></dt>
                 <dd><?= date("y-m-d H:i", strtotime($view['wr_datetime'])) ?></dd>
             </dl>
 
             <dl class="board-article-hit">
-                <dt>조회수<span class="glue">:</span></dt>
+                <dt><?= $hitTh ?><span class="glue">:</span></dt>
                 <dd><?= number_format($view['wr_hit']) ?></dd>
             </dl>
         </section>
@@ -56,18 +62,18 @@ foreach ($view['file'] as $file) {
 
     <?php if ($attachedFiles): ?>
         <section class="board-attaches">
-            <h3 class="board-attaches-title"><?= count($attachedFiles) ?>개 첨부 파일</h3>
+            <h3 class="board-attaches-title"><?= count($attachedFiles) ?><?= $attachedText ?></h3>
             <ul class="dot-grid-gap10 dot-grid2 dot-grid3-76 dot-grid4-at-12">
                 <?php foreach ($attachedFiles as $file) : ?>
                     <li class="dot-grid">
                         <div class="board-attach respond-height_16-9">
-                            <a href="<?= $file['href'] ?>" title="<?= $file['source'] ?> 파일 내려 받기"
+                            <a href="<?= $file['href'] ?>" title="<?= $file['source'] ?><?= $downloadText ?>"
                                class="board-attach-link respond-height">
                                 <dl class="board-attach-info">
                                     <dt class="board-attach-name"><?= $file['source'] ?></dt>
                                     <dd class="board-attach-size"><?= $file['size'] ?></dd>
                                     <dd class="board-attach-time"><?= $file['datetime'] ?></dd>
-                                    <dd class="board-attach-download"><?= $file['download'] ?>회 내려 받음</dd>
+                                    <dd class="board-attach-download"><?= $file['download'] ?><?= $downloadedText ?></dd>
                                     <?php if ($file['content']): ?>
                                         <dd class="board-attach-content"><?= $file['content'] ?></dd>
                                     <?php endif ?>
@@ -82,14 +88,14 @@ foreach ($view['file'] as $file) {
 
     <?php if (!$useYoutube && $links): ?>
         <section class="board-links">
-            <h3>링크<span class="glue">:</span></h3>
+            <h3><?= $linkText ?><span class="glue">:</span></h3>
             <ul>
                 <?php foreach ($links as $link): ?>
                     <li class="board-link">
                         <a href="<?= $link['href'] ?>">
                             <?= $link['text'] ?>
                         </a>
-                        <?= $link['hit'] ?>회 연결
+                        <?= $link['hit'] ?><?= $linkedText ?>
                     </li>
                 <?php endforeach ?>
             </ul>
@@ -107,28 +113,30 @@ foreach ($view['file'] as $file) {
     <div class="board-modes">
         <div class="board-modes-left">
             <?php if ($update_href): ?>
-            <a href="<?= $update_href ?>"
-               class="board-mode board-mode-left board-mode-update">
-                수정
-            </a>
+                <a href="<?= $update_href ?>"
+                   class="board-mode board-mode-left board-mode-update">
+                    <?= $modifyText ?>
+                </a>
             <?php endif ?>
-            <?php if ($delete_href) :?>
-            <a href="<?= $delete_href ?>" class="board-mode board-mode-left board-mode-delete"
-               onclick="del(this.href); return false;">삭제</a>
+            <?php if ($delete_href) : ?>
+                <a href="<?= $delete_href ?>" class="board-mode board-mode-left board-mode-delete"
+                   onclick="del(this.href); return false;"><?=$deleteText?></a>
             <?php endif ?>
             <?php if ($reply_href) : ?>
-            <a href="<?= $reply_href ?>" class="board-mode board-mode-left board-mode-reply">
-                답변
-            </a>
+                <a href="<?= $reply_href ?>" class="board-mode board-mode-left board-mode-reply">
+                    <?= $replyText ?>
+                </a>
             <?php endif ?>
             <?php if ($search_href) : ?>
-            <a href="<?= $search_href ?>" class="board-mode board-mode-left board-mode-search">
-                검색
-            </a>
+                <a href="<?= $search_href ?>" class="board-mode board-mode-left board-mode-search">
+                    <?= $searchText ?>
+                </a>
             <?php endif ?>
         </div>
         <div class="board-modes-right">
-            <a href="<?= $list_href ?>" class="board-mode board-mode-right board-mode-list">목록</a>
+            <a href="<?= $list_href ?>" class="board-mode board-mode-right board-mode-list">
+                <?= $listText ?>
+            </a>
         </div>
     </div>
 

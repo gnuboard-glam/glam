@@ -3,14 +3,14 @@
  * @global $wr_id int
  */
 
+require_once __DIR__ .'./text.php';
+
 require __DIR__ . '/list/head.php';
 
-$writeTh = '이름';
-$writeText = '쓰기';
 
 ?>
 
-<?php if($limit):?>
+<?php if ($limit): ?>
     <table class="board-items">
         <thead>
         <tr>
@@ -21,28 +21,28 @@ $writeText = '쓰기';
                             <label>
                                 <input type="checkbox" id="chkall"
                                        onclick="if (this.checked) all_checked(true); else all_checked(false);">
-                                전체
+                                <?= $totalText ?>
                             </label>
                         <?php else: ?>
-                            번호
+                            <?= $numberText ?>
                         <?php endif ?>
                     </span>
             </th>
             <?php if ($is_category): ?>
-                <th class="board-item-th board-item-category" scope="col"><span>분류</span></th>
+                <th class="board-item-th board-item-category" scope="col"><span><?= $categoryTh ?></span></th>
             <?php endif ?>
-            <th class="board-item-th board-item-subject" scope="col"><span>제목</span></th>
-            <th class="board-item-th board-item-name" scope="col"><span><?=$writeTh?></span></th>
+            <th class="board-item-th board-item-subject" scope="col"><span><?= $subjectText ?></span></th>
+            <th class="board-item-th board-item-name" scope="col"><span><?= $writeTh ?></span></th>
             <th class="board-item-th board-item-date" scope="col">
-                <span><?= subject_sort_link('wr_datetime', $qstr2, 1) ?>날짜</a></span></th>
+                <span><?= subject_sort_link('wr_datetime', $qstr2, 1) ?><?= $dateTh ?></a></span></th>
             <th class="board-item-th board-item-read" scope="col"><span><?= subject_sort_link('wr_hit', $qstr2, 1) ?>
-                        조회</a></span></th>
+                        <?= $hitTh ?></a></span></th>
             <?php if ($is_good) : ?>
                 <th class="board-item-th board-item-good" scope="col">
-                <span><?= subject_sort_link('wr_good', $qstr2, 1) ?>추천</a></span></th><?php endif ?>
+                <span><?= subject_sort_link('wr_good', $qstr2, 1) ?><?= $goodTh ?></a></span></th><?php endif ?>
             <?php if ($is_nogood) : ?>
                 <th class="board-item-th board-item-bad" scope="col">
-                    <span><?= subject_sort_link('wr_nogood', $qstr2, 1) ?>비추천</a></span></th>
+                    <span><?= subject_sort_link('wr_nogood', $qstr2, 1) ?><?= $badTh ?></a></span></th>
             <?php endif ?>
 
         </tr>
@@ -55,7 +55,7 @@ $writeText = '쓰기';
 
             if ($item['is_notice']) {
                 $trClass[] = 'notice';
-                $no = '공지';
+                $no = $noticeText;
             }
 
             if ($wr_id == $item['wr_id']) {
@@ -103,14 +103,14 @@ $writeText = '쓰기';
                     </td>
                 <?php endif ?>
                 <td class="board-item-td board-item-subject">
-                    <?=$item['icon_reply'];?>
+                    <?= $item['icon_reply']; ?>
                     <a href="<?= $item['href'] ?>">
                         <?= $item['subject'] ?>
                     </a>
                     <?= $icons ?>
                     <?php if ($item['comment_cnt']) { ?><span class="sound_only">댓글</span><?= $item['comment_cnt']; ?>
                         <span
-                            class="sound_only">개</span><?php } ?>
+                                class="sound_only">개</span><?php } ?>
                 </td>
                 <td class="board-item-td board-item-name">
                     <?= $item['name'] ?>
@@ -130,9 +130,9 @@ $writeText = '쓰기';
         </tbody>
     </table>
 
-<?php else:?>
-    <div class="board-item_blank">게시물이 없습니다.</div>
-<?php endif?>
+<?php else: ?>
+    <div class="board-item_blank"><?= $emptyText ?></div>
+<?php endif ?>
 
 <?php
 

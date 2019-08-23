@@ -11,15 +11,15 @@ require __DIR__ . '/write/head.php';
 
 <?php if (!$member['mb_id']): ?>
     <?= Grid::open(2, 20) ?>
-    <?= FormField::div($name->label('이름')) ?>
-    <?= FormField::div($password->label('비밀번호')) ?>
+    <?= FormField::div($name->label($nameText)) ?>
+    <?= FormField::div($password->label($passwordText)) ?>
     <?= Grid::close ?>
 <?php endif ?>
 
 
     <div class="form-field">
             <span class="form-label">
-                기능
+                <?=$optionText?>
             </span>
         <span class="form-checkboxes">
             <?php foreach ($options as $label => $checkbox): ?>
@@ -28,21 +28,21 @@ require __DIR__ . '/write/head.php';
         </span>
     </div>
 
-<?= FormField::div($subject->label('제목')) ?>
-<?= FormField::div($content->label('내용')) ?>
+<?= FormField::div($subject->label($subjectText)) ?>
+<?= FormField::div($content->label($contentText)) ?>
 
 <?php if ($is_file): ?>
     <div class="form-field_files">
         <?php for ($i = 0; $i < $file_count; $i++): ?>
             <div class="form-field">
             <span class="form-field-label">
-                첨부 #<?= $i + 1 ?>
+                <?=$attachText?> #<?= $i + 1 ?>
             </span>
                 <?php if ($w == 'u' && $file[$i]['file']): ?>
                     <span class="file_del">
                         <label>
                             <input type="checkbox" name="bf_file_del[<?php echo $i; ?>]" value="1">
-                            <em><?= $file[$i]['source'] ?></em>(<?= $file[$i]['size'] ?>) 제거
+                            <em><?= $file[$i]['source'] ?></em>(<?= $file[$i]['size'] ?>) <?=$deleteText?>
                         </label>
                     </span>
                 <?php endif ?>
@@ -53,7 +53,7 @@ require __DIR__ . '/write/head.php';
 
         <?php endfor ?>
         <p class="form-field-description">
-            <?php echo $upload_max_filesize ?> 이하 용량만 첨부 가능
+            <?php echo $upload_max_filesize ?> <?=$maxAttachSizeText?>
         </p>
     </div>
 <?php endif ?>
