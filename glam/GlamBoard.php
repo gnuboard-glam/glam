@@ -262,7 +262,7 @@ class GlamBoard extends GlamBase
                 $slug = $_slugs[0] ?? null;
                 if (isset($fixedLocales[$slug])) {
                     $locale = $slug;
-
+                    array_shift($_slugs);
                     if (!isset($_slugs[0])) {
                         $this->setLocationIndex();
                     }
@@ -271,8 +271,6 @@ class GlamBoard extends GlamBase
 
             if ($locale) {
                 set_session('locale', $locale);
-                array_shift($_slugs);
-
             } elseif (isset($_SESSION['locale'])) {
                 $locale = &$_SESSION['locale'];
             }
