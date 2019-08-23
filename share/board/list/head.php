@@ -50,7 +50,7 @@ $categories = [];
 <?php if ($useListHead): ?>
     <div class="board-list-head">
         <div class="dot-area">
-            <h3><span>전체 <b><?= number_format($total_count) ?></b>건</span>, <b><?= $page ?></b>/<?= $total_page ?>쪽</h3>
+            <h3><span><?=$totalText?> <b><?= number_format($total_count) ?></b><?=$countText?></span>, <b><?= $page ?></b>/<?= $total_page ?><?=$pageText?></h3>
         </div>
     </div>
 <?php endif ?>

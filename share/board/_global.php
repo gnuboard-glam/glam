@@ -15,6 +15,10 @@ if ($glam->is54) {
 }
 
 $totalText = $totalText ?? '전체';
+$countText = $contentText ?? '건';
+$pageText = $pageText ?? '쪽';
+
+$allText = $allText ?? '전체';
 $numberText = $numberText ?? '번호';
 $writeTh = $writeTh ?? '이름';
 $writeText = $writeText ?? '쓰기';

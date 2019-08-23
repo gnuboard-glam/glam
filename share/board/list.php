@@ -17,7 +17,7 @@ require __DIR__ . '/list/head.php';
                             <label>
                                 <input type="checkbox" id="chkall"
                                        onclick="if (this.checked) all_checked(true); else all_checked(false);">
-                                <?= $totalText ?>
+                                <?= $allText ?>
                             </label>
                         <?php else: ?>
                             <?= $numberText ?>
