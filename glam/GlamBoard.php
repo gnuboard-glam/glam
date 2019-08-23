@@ -6,6 +6,7 @@ use Dot\Dev\Console;
 use Dot\Dot;
 use Dot\Html\Head;
 use Dot\Strings;
+use function Dot\startWith;
 
 class GlamBoard extends GlamBase
 {
@@ -249,20 +250,29 @@ class GlamBoard extends GlamBase
 
             $this->_locales = $fixedLocales;
 
-            $_slugs = &$this->_slugs;
-            $slug = $_slugs[0] ?? null;
-
             $locale = $defaultLocale;
 
-            if ($slug) {
+            if ($this->isBoard) {
+                $prefix = explode('_', $this->isBoard)[0];
+                if (isset($fixedLocales[$prefix])) {
+                    $locale = $prefix;
+                }
+            } else {
+                $_slugs = &$this->_slugs;
+                $slug = $_slugs[0] ?? null;
                 if (isset($fixedLocales[$slug])) {
                     $locale = $slug;
-                    set_session('locale', $locale);
-                    array_shift($_slugs);
+
                     if (!isset($_slugs[0])) {
                         $this->setLocationIndex();
                     }
                 }
+            }
+
+            if ($locale) {
+                set_session('locale', $locale);
+                array_shift($_slugs);
+
             } elseif (isset($_SESSION['locale'])) {
                 $locale = &$_SESSION['locale'];
             }
@@ -352,7 +362,7 @@ class GlamBoard extends GlamBase
                 $name = '<b>' . $name . '</b>';
             }
 
-            if($nav['class']){
+            if ($nav['class']) {
                 $classList[] = $nav['class'];
             }
 
