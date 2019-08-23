@@ -3,11 +3,7 @@
  * @global $wr_id int
  */
 
-require_once __DIR__ .'/text.php';
-
 require __DIR__ . '/list/head.php';
-
-
 ?>
 
 <?php if ($limit): ?>

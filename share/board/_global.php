@@ -47,3 +47,5 @@ $passwordText = $passwordText ?? '비밀번호';
 $optionText = $optionText ?? '기능';
 
 $maxAttachSizeText = $maxAttachSizeText ?? ' 이하 용량만 첨부 가능';
+
+$submitText = $submitText ?? '등록';

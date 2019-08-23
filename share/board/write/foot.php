@@ -1,6 +1,6 @@
 <?php
 if (!isset($submitFor)) {
-    $submitFor = $w == 'u' ? '수정' : '등록';
+    $submitFor = $w == 'u' ? $modifyText : $submitText;
 }
 ?>
 
@@ -16,7 +16,7 @@ if (!isset($submitFor)) {
         <input type="submit" value="<?= $submitFor ?>(Alt+S)" accesskey="s">
     </div>
     <div class="form-buttons-right">
-        <a href="<?= $listHref ?>" data-confirm>목록</a>
+        <a href="<?= $listHref ?>" data-confirm><?=$listText?></a>
     </div>
 </div>
 
